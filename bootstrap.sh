@@ -6,7 +6,7 @@ sudo pacman -S reflector
 if [ ! -f /etc/pacman.d/mirrorlist.bkp ]; then
     sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bkp
 fi
-sudo reflector --verbose --latest 12 --protocol https --country 'India' --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose --latest 12 --protocol https --country 'Singapore' --save /etc/pacman.d/mirrorlist
 sudo pacman -Syyu
 sudo pacman -S git ansible
 # sudo apt install --yes ansible git
