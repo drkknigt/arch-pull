@@ -1,0 +1,41 @@
+---
+- name: clone dotfiles
+  import_tasks: dotfiles.yml
+  tags: dotfiles
+    
+- name: clone wallpapers
+  import_tasks: wallpapers.yml
+  tags: wallpapers
+
+- name: tinker configs and delete unnecessary directories
+  import_tasks: config.yml
+  tags: change_config
+    
+     
+- name: install stow
+  import_tasks: stow.yml
+  tags: stow
+    
+- name: download fonts
+  import_tasks: fonts.yml
+  tags: fonts
+
+- name: copy lfrun 
+  shell: |
+    cp $HOME/.dotfiles/lf/.config/lf/lfrun $HOME/usr/bin/
+    chmod +x $HOME/.dotfiles/lf/.config/lf/preview
+    chmod +x $HOME/.dotfiles/lf/.config/lf/cleaner
+    chmod +x $HOME/usr/bin/lfrun
+
+- name: setup brave config
+  shell: |
+    mkdir -p $HOME/.config/BraveSoftware/Brave-Browser/Default
+    cp ~/.dotfiles/brave/Local\ State ~/.config/BraveSoftware/Brave-Browser
+    cp ~/.dotfiles/brave/Preferences ~/.config/BraveSoftware/Brave-Browser/Default
+  tags: brave-config
+
+- name: symbolic link brave-browser to brave
+  file:
+     src: "/usr/bin/brave" 
+     dest: "$HOME/usr/bin/brave-browser"
+     state: link

@@ -1,0 +1,26 @@
+--- 
+- name: install system
+  hosts: localhost
+  name: starting git roles
+  pre_tasks:
+    - name: update pacman
+      become: true
+      community.general.pacman:
+        update_cache: true
+        upgrade: true
+  roles:
+    - { role: pacman, tags: pacman }
+    - { role: directory, tags: directory }
+    - { role: yay, tags: yay }
+    - { role: git, tags: git }
+    - { role: editor, tags: editor }
+    - { role: languages, tags: languages }
+    - { role: terminals, tags: terminals }
+    - { role: core, tags: core }
+    - { role: addons, tags: addons }
+    - { role: config, tags: config }
+    - { role: game, tags: game }
+    - { role: wayland, tags: wayland }
+    - { role: docker, tags: docker }
+    - { role: systemd, tags: systemd }
+    - { role: wifi, tags: wifi }

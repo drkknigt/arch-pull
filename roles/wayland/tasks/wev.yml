@@ -1,0 +1,12 @@
+---
+- name: clone wev
+  git:
+    repo: https://git.sr.ht/~sircmpwn/wev/
+    dest: $HOME/wev
+
+- name: build wev
+  become: true
+  shell: |
+    cd /home/{{ current_user }}/wev
+    make
+    make install

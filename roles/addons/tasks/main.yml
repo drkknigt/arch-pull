@@ -1,0 +1,59 @@
+---
+- name: install misc software
+  import_tasks: utilities.yml
+  tags: utility
+
+- name: install lazygit
+  become: yes
+  community.general.pacman:
+    name: lazygit
+  tags: lazygit
+
+- name: install glow markdown reader
+  become: yes
+  community.general.pacman:
+    name: glow
+  tags: glow
+
+- name: install firefox
+  become: yes
+  community.general.pacman:
+    name: firefox
+  tags: firefox
+    
+- name: install fast file searching and text search tools
+  become: yes
+  community.general.pacman:
+    name: ["ripgrep","fd"]
+  tags: search
+
+- name: install zathura
+  import_tasks: zathura.yml
+  tags: zathura
+
+- name: install brave browser
+  import_tasks: brave.yml
+  tags: brave
+
+- name: install protonvpn
+  import_tasks: vpn.yml
+  tags: vpn
+
+- name: install lf
+  become: yes
+  community.general.pacman:
+    name: lf
+  tags: lf
+    
+
+- name: install nnn
+  become: yes
+  community.general.pacman:
+    name: nnn
+  tags: lf
+
+- name: install flameshot
+  community.general.pacman:
+    name: flameshot
+  become: yes
+  tags: screenshot

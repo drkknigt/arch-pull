@@ -1,0 +1,21 @@
+- name: install dunst dependencies 
+  become: yes
+  apt:
+    name: ['libdbus-1-dev' , 'libx11-dev' , 'libxinerama-dev' , 'libxrandr-dev','libxss-dev','libglib2.0-dev', 'libpango1.0-dev','libgtk-3-dev','libxdg-basedir-dev','libnotify-dev']
+    update_cache: True
+  ignore_errors: yes
+
+- name: clone dunst
+  git:
+    repo: https://github.com/dunst-project/dunst
+    dest: $HOME/dunst
+    depth: 1
+    version: v1.9.2 
+
+- name: build dunst
+  become: yes
+  shell: |
+    cd /home/{{ current_user }}/dunst
+    make
+    make install
+    cd /home/{{ current_user }}/

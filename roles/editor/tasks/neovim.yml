@@ -1,0 +1,16 @@
+- name : install neovim
+  community.general.pacman:
+    name: neovim
+  become: yes
+
+- name: make undodir for nvim
+  file:
+    path: $HOME/.textedit/nvim/undodir
+    state: directory
+  tags: editor_path
+
+- name: make undodir for vim
+  file:
+    path: $HOME/.textedit/vim/undodir
+    state: directory
+  tags: editor_path

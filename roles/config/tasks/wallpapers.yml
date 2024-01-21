@@ -1,0 +1,7 @@
+---
+- name: clone wallpapers
+  shell: git clone git@github.com:drkknigt/wall.git $HOME/wall
+      
+- name: move wallpapers to pictures
+  shell: |
+    cp $HOME/wall/* $HOME/Pictures/ -r

@@ -1,0 +1,13 @@
+---
+- name: clone sway-idle-audio
+  git:
+    repo: https://github.com/ErikReider/SwayAudioIdleInhibit
+    dest: $HOME/SwayAudioIdleInhibit
+
+- name: build sway-idle-audio
+  become: true
+  shell: |
+    cd /home/{{ current_user }}/SwayAudioIdleInhibit
+    meson build
+    ninja -C build
+    meson install -C build

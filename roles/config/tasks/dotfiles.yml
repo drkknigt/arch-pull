@@ -1,0 +1,9 @@
+---
+- name: clone dotfiles
+  shell: git clone git@github.com:drkknigt/.dotfiles.git $HOME/.dotfiles
+
+- name: clone bootstrap for mint
+  shell: git clone git@github.com:drkknigt/.ansible_sync $HOME/.ansible_sync
+
+- name: clone bootstrap for arch
+  shell: git clone git@github.com:drkknigt/arch-pull $HOME/arch-pull

@@ -1,0 +1,8 @@
+---
+- name: install rustup
+  become: yes
+  community.general.pacman:
+    name: rustup
+
+- name: install stable
+  shell: rustup default stable

@@ -1,0 +1,34 @@
+---
+- name: install build essentials
+  become: true
+  community.general.pacman:
+    name: base-devel
+  tags: build-tools
+
+- name: install python
+  import_tasks: python.yml
+  tags: python
+  
+
+- name: install clangd
+  import_tasks: clangd.yml
+  tags: clangd
+    
+- name: install lua
+  import_tasks: lua.yml
+  tags: lua
+  
+
+- name: install rust
+  import_tasks: rust.yml
+  tags: rust
+    
+- name: install go
+  become: yes
+  community.general.pacman:
+    name: go
+  tags: go
+    
+- name: install node
+  import_tasks: node.yml
+  tags: node

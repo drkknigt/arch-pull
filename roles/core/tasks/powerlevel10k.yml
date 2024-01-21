@@ -1,0 +1,6 @@
+---
+- name: Install powerlevel10k theme
+  git:
+    repo: 'https://github.com/romkatv/powerlevel10k.git'
+    depth: 1
+    dest: "~/.oh-my-zsh/custom/themes/powerlevel10k"

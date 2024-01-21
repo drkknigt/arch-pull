@@ -1,0 +1,58 @@
+---
+- name: install tmux
+  community.general.pacman:
+    name: tmux
+  become: True
+  tags: tmux
+  
+
+- name: install fzf
+  community.general.pacman:
+    name: fzf
+  become: True
+  tags: fzf
+
+- name: install picom
+  community.general.pacman:
+    name: picom
+  become: True
+  tags: picom
+
+- name: install i3
+  community.general.pacman:
+    name: ["i3-wm","i3blocks","i3lock","i3status"]
+  become: True
+  tags: i3
+    
+ 
+- name: install dunst
+  community.general.pacman:
+    name: dunst
+  become: True
+  tags: dunst
+
+- name: install pipewire
+  community.general.pacman:
+    name: ["pipewire","pipewire-alsa","wireplumber","pipewire-pulse"]
+  become: True
+  tags: audio
+
+- name: install polybor
+  import_tasks: polybar.yml
+  tags: polybar
+
+- name: install zsh-shell
+  import_tasks: zsh.yml
+  tags: zsh
+
+- name: install oh-my-zsh
+  import_tasks: oh_my_zsh.yml
+  tags: oh_my_zsh
+
+- name: install powerlevel10k theme
+  import_tasks: powerlevel10k.yml
+  tags: shelltheme
+
+- name: install git suggestions
+  import_tasks: git_suggestions.yml
+  tags: git_suggestions

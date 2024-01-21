@@ -1,0 +1,40 @@
+---
+- name: install utilities software
+  community.general.pacman:
+    name: ["tldr","htop","mpv","cmake","rofi","nitrogen","lxappearance","arandr","bat","vnstat","xwallpaper","brightnessctl","tree","xautolock","kcolorchooser","feh","virt-manager","lm_sensors","psensor","qbittorrent","libqalculate","smartmontools","gsmartcontrol","gimp","ffmpeg","mediainfo","testdisk","acpi","tlp","tlp-rdw","powertop","cheese","pavucontrol","sddm","xdotool","git-delta","thermald" , "vlc","sysstat","cpupower"]
+  become: yes
+  tags: os-utilities
+
+
+- name: install social networking software
+  community.general.pacman:
+    name: telegram-desktop
+  become: yes
+  tags: social
+      
+- name: install network tools
+  community.general.pacman:
+    name: ["openssh","proxychains-ng","tor","torbrowser-launcher","nmap","whois","wireshark-qt","wireshark-cli"]
+  become: yes
+  tags: net-tools
+      
+
+- name: xorg and friends
+  become: true
+  community.general.pacman:
+    name: [  'pkgstats',  'gst-libav',  'jre8-openjdk', 'amd-ucode', 'xorg' , 'xterm' , 'perl-file-mimeinfo' , 'less' , 'coreutils' , "man-db" , "man-pages" ]
+  tags: xorg-friends
+
+- name: get latest ProtonVPN version name
+  command: yay -S downgrade --noconfirm
+
+- name: make user bin directory
+  file:
+    path: $HOME/usr/bin
+    state: directory
+  tags: delta
+
+- name: update mandb
+  command: mandb
+  become: yes
+  tags: update-man

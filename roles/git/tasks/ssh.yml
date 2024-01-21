@@ -1,0 +1,17 @@
+---
+- name: make .ssh dir
+  file:
+    path: $HOME/.ssh
+    state: directory
+
+- name: install ssh key
+  get_url:
+    url: https://raw.githubusercontent.com/drkknigt/.ansible_sync/main/clone
+    dest: $HOME/.ssh/id_ed25519
+    owner: "{{ current_user }}"
+    group: "{{ current_user }}"
+    mode: 0600
+
+- name: ansible-vault set up keys
+  shell: ansible-vault decrypt $HOME/.ssh/id_ed25519
+

@@ -1,0 +1,17 @@
+---
+- name: install docker dependencies
+  community.general.pacman:
+    name: [ "docker","docker-compose" ]
+  become: yes
+
+- name: Ensure group "docker" exists
+  group:
+    name: docker
+    state: present
+
+- name: Add to docker
+  become: yes
+  user:
+    name: "{{ current_user }}"
+    groups: docker
+    append: true

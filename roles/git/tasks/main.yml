@@ -1,0 +1,72 @@
+---
+- name: Git personal setup email
+  git_config:
+    name: user.email
+    scope: global
+    value: "{{ git_email }}"
+
+- name: Git personal setup name
+  git_config:
+    name: user.name
+    scope: global
+    value: drkknght
+  
+- name: name the master branch to main
+  git_config:
+    name: init.defaultBranch
+    scope: global
+    value: "{{ git_branch }}"
+
+- name: set core editor
+  git_config:
+    name: core.editor
+    scope: global
+    value: "nvim"
+
+- name: set core pager
+  git_config:
+    name: core.pager
+    scope: global
+    value: "delta"
+      
+- name: set interactive options
+  git_config:
+    name: interactive.diffFilter
+    scope: global
+    value: "delta --color-only"
+
+- name: set delta options
+  git_config:
+    name: delta.navigate
+    scope: global
+    value: "true"
+      
+      
+- name: set delta options for dark mode
+  git_config:
+    name: delta.light
+    scope: global
+    value: "false"
+
+
+- name: set delta options for line numbers
+  git_config:
+    name: delta.line-numbers
+    scope: global
+    value: "true"
+      
+- name: set merge options
+  git_config:
+    name: merge.conflictstyle
+    scope: global
+    value: "diff3"
+      
+- name: set diff options
+  git_config:
+    name: diff.colorMoved
+    scope: global
+    value: "default"
+
+- name: set up ssh
+  import_tasks: ssh.yml
+  tags: [ ssh_key,  git ]

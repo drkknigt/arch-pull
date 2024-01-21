@@ -1,0 +1,11 @@
+---
+- name: install wine and lutris
+  import_tasks: wine.yml
+  tags: wine
+
+- name: install zen kernel
+  community.general.pacman:
+    name: [ "linux-lts","linux-zen","linux-zen-headers","linux-lts-headers"]
+  become: yes
+  tags: kernel
+

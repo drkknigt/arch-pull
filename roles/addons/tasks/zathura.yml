@@ -1,0 +1,6 @@
+---
+- name: install zathura
+  community.general.pacman:
+    name: ["zathura","zathura-djvu","zathura-pdf-mupdf"]
+  become: yes
+  tags: zathura

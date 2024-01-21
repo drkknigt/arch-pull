@@ -1,0 +1,16 @@
+--- 
+- name: configure sddm
+  import_tasks: sddm.yml
+  tags: sddm
+
+- name: install wayland & sway
+  import_tasks: sway.yml
+  tags: sway
+
+- name: install hyprpicker
+  command: yay -S hyprpicker --noconfirm
+  tags: hypr
+
+- name: install idle
+  command: yay -S sway-audio-idle-inhibit-git --noconfirm
+  tags: idle

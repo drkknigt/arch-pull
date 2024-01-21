@@ -1,0 +1,9 @@
+---
+- name: install stow
+  community.general.pacman:
+    name: stow
+  become: yes
+    
+- name: stow dotfiles
+  shell: |
+    cd ~/.dotfiles && stow */

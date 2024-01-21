@@ -1,0 +1,16 @@
+- name: clone nnn
+  git: 
+    repo: https://github.com/jarun/nnn
+    dest: $HOME/nnn
+    recursive: true
+  
+      
+- name: build nnn
+  become: true
+  shell: | 
+    cd /home/{{ current_user }}/nnn
+    sudo make O_EMOJI=1 O_NERD=1
+    mkdir /home/{{ current_user }}/usr/bin -p
+    cp ./nnn /home/{{ current_user }}/usr/bin/
+    cd /home/{{ current_user }}
+    rm -rf nnn

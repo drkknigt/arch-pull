@@ -1,0 +1,15 @@
+---
+- name: install vim
+  import_tasks: vim.yml
+  tags: vim
+  
+
+- name: install neovim
+  import_tasks: neovim.yml
+  tags: neovim
+
+- name: install vscode
+  become: yes
+  community.general.pacman:
+    name: code
+  tags: vscode

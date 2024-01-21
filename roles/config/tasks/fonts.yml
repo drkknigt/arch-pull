@@ -1,0 +1,27 @@
+---
+- name: make dir fonts
+  file:
+    path: $HOME/.local/share/fonts
+    state: directory
+
+- name: install unzip
+  community.general.pacman:
+    name: unzip
+  become: yes
+  
+
+- name: install fonts
+  unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/CascadiaCode.zip
+    dest: $HOME/.local/share/fonts
+    remote_src: yes
+
+- name: install noto fonts
+  community.general.pacman:
+    name: noto-fonts-emoji
+    extra_args: --needed
+  become: yes
+
+- name: set up fonts
+  shell: fc-cache
+

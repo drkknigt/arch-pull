@@ -1,0 +1,69 @@
+---
+# - name: install i3 
+#   apt:
+#     name: apt
+#     update_cache: True
+#   become: yes
+#   ignore_errors: yes
+#
+# - name: install keys
+#   apt_key:
+#     keyserver: keyserver.ubuntu.com
+#     id: EFC31B0AE9F1000B38E37FC8C0930F305A0E0FEF
+#   become: yes
+#   ignore_errors: yes
+#
+# - name: install i3gaps repo
+#   apt_repository:
+#      repo: deb https://ppa.launchpadcontent.net/regolith-linux/stable/ubuntu groovy main 
+#      state: present
+#      update_cache: True
+#   become: yes
+#   ignore_errors: yes
+#
+# - name: install i3wm
+#   apt:
+#     name: i3-gaps
+#   become: yes
+#   ignore_errors: yes
+#
+# - name: install autotiling
+#   git:
+#     repo: https://www.github.com/nwg-piotr/autotiling
+#     dest: $HOME/autotiling
+#   tags: autotiling
+#
+# - name: move make.py to bin
+#   copy:
+#     src: ~/autotiling/autotiling/main.py
+#     dest: $HOME/.local/bin/autotiling
+#     mode: 0750
+#   tags: autotiling
+  
+  
+
+- name: clone git i3wm
+  git:
+    repo: https://github.com/i3/i3
+    dest: $HOME/Downloads/i3
+    version: stable
+    recursive: True
+
+- name: build dependencies
+  apt:
+      name: ["meson", "libstartup-notification0-dev", "libxcb-xkb-dev", "libxcb-xinerama0-dev", "libxcb-randr0-dev", "libxcb-shape0-dev", "libxcb-util-dev", "libxcb-cursor-dev", "libxcb-keysyms1-dev", "libxcb-icccm4-dev", "libxcb-xrm-dev", "libxkbcommon-dev", "libxkbcommon-x11-dev", "libyajl-dev", "libpcre2-dev", "libcairo2-dev", "libpango1.0-dev", "libev-dev"]
+  become: true 
+  ignore_errors: true
+
+- name: install latest
+  shell: |
+    cd /home/{{ current_user }}/Downloads/i3
+    meson build
+    ninja -C build
+    ninja -C build install
+
+- name: install i3wm 
+  apt:
+    name: ["i3-wm","i3"]
+  become: true
+  ignore_errors: true

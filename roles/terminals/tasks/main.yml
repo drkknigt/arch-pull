@@ -1,0 +1,15 @@
+---
+- name: make bin directory insile $HOME/.local
+  file:
+    path: $HOME/.local/bin
+    state: directory
+  tags: [ alacritty, fzf, nnn ]
+      
+# - name: install kitty
+#   import_tasks: kitty.yml
+#   tags: kitty
+  
+
+- name: install alacritty from aslatter ppa
+  import_tasks: alacritty.yml
+  tags: alacritty

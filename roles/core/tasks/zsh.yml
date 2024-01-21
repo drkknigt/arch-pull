@@ -1,0 +1,10 @@
+---
+- name: Install ZSH
+  community.general.pacman:
+    name: zsh
+  become: True
+  become: yes
+    
+- name: Change shell to zsh
+  shell: usermod --shell /bin/zsh {{ current_user }}
+  become: yes

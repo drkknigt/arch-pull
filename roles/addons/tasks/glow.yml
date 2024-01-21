@@ -1,0 +1,4 @@
+- name: install glow
+  shell: |
+    PATH=/usr/local/go/bin:$PATH
+    go install github.com/charmbracelet/glow@latest

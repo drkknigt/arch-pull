@@ -1,0 +1,22 @@
+---
+- name: install sddm
+  community.general.pacman:
+    name: [ "qt5-graphicaleffects","qt5-quickcontrols2","qt5-svg","sddm" ]
+  become: True
+
+
+- name: clone sddm theme
+  shell: git clone git@github.com:drkknigt/sugar-dark.git $HOME/sugar-dark
+
+- name: set theme for sddm
+  become: true
+  shell: |
+    mkdir /etc/sddm.conf.d
+    cp /home/{{ current_user }}/sugar-dark /usr/share/sddm/themes/ -rf
+
+- name: copy sddm conf to /etc
+  become: True
+  file:
+     src: "/home/{{ current_user }}/.dotfiles/sddm/sddm.conf" 
+     dest: "/etc/sddm.conf.d/sddm.conf"
+     state: link
