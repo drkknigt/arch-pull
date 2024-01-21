@@ -1,0 +1,2 @@
+# arch-pull
+bootstrap arch 
