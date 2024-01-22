@@ -18,3 +18,4 @@ if [ "$wifi_info" = "yes" ]; then
 else
     ansible-pull --extra-vars install_wifi="no" -U https://github.com/drkknigt/arch-pull -vvv --ask-become-pass
 fi
+. ~/.dotfiles/sys_d/systemd-disabled
