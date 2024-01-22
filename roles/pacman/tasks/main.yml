@@ -4,12 +4,3 @@
   community.general.pacman:
     name: ["pacman-contrib","reflector"]
 
-- name: get latest mirrors for pacman
-  become: yes
-  shell: |
-    # curl -s 'https://archlinux.org/mirrorlist/?country=IN&protocol=https&ip_version=4&use_mirror_status=on' | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 10 - | sudo tee /etc/pacman.d/mirrorlist
-    cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bkp
-    # reflector --protocol https --country 'Singapore' --latest 50 --sort rate --save /etc/pacman.d/mirrorlist
-    reflector --verbose --latest 12 --protocol https --country 'Singapore' --save /etc/pacman.d/mirrorlist
-    pacman -Syyu
-  tags: mirrors

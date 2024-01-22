@@ -1,9 +1,33 @@
 ---
-- name: install utilities software
+- name: install system-softwares
   community.general.pacman:
-    name: ["tldr","htop","mpv","cmake","rofi","nitrogen","lxappearance","arandr","bat","vnstat","xwallpaper","brightnessctl","tree","xautolock","kcolorchooser","feh","virt-manager","lm_sensors","psensor","qbittorrent","libqalculate","smartmontools","gsmartcontrol","gimp","ffmpeg","mediainfo","testdisk","acpi","tlp","tlp-rdw","powertop","cheese","pavucontrol","sddm","xdotool","git-delta","thermald" , "vlc","sysstat","cpupower"]
+    name: ["cmake","brightnessctl","vnstat","virt-manager","sysstat","cpupower" ]
   become: yes
-  tags: os-utilities
+  tags: system-utility
+
+- name: install multimedia-utility
+  community.general.pacman:
+    name: ["mpv","nitrogen","lxappearance","arandr","xwallpaper","kcolorchooser","feh","gimp","ffmpeg","mediainfo","cheese","pavucontrol","vlc"]
+  become: yes
+  tags: media-utility
+
+- name: install user-utilities
+  community.general.pacman:
+    name: ["tldr","htop","rofi","bat","tree","xautolock","qbittorrent","libqalculate","sddm","xdotool","git-delta"]
+  become: yes
+  tags: user-utility
+
+- name: install disk-utilities
+  community.general.pacman:
+    name: ["smartmontools","gsmartcontrol","testdisk"]
+  become: yes
+  tags: disk-utility
+
+- name: install power-temp-utilities
+  community.general.pacman:
+    name: ["lm_sensors","psensor","acpi","tlp","tlp-rdw","powertop","thermald"]
+  become: yes
+  tags: temp-power-utility
 
 
 - name: install social networking software

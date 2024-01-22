@@ -3,9 +3,7 @@ read -p "Do you want to install rtl8821ce wifi driver ? (yes/no)" wifi_info
 sudo sed -i 's/#Parallel/Parallel/g' /etc/pacman.conf
 sudo pacman -Syy
 sudo pacman -S reflector
-if [ ! -f /etc/pacman.d/mirrorlist.bkp ]; then
-    sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bkp
-fi
+sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bkp-"$(date --iso-8601='hours')"
 sudo reflector --verbose --latest 12 --protocol https --country 'Singapore' --save /etc/pacman.d/mirrorlist
 sudo pacman -Syyu
 sudo pacman -S git ansible
