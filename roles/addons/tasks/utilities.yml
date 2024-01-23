@@ -7,7 +7,7 @@
 
 - name: install multimedia-utility
   community.general.pacman:
-    name: ["mpv","nitrogen","lxappearance","arandr","xwallpaper","kcolorchooser","feh","gimp","ffmpeg","mediainfo","cheese","pavucontrol","vlc"]
+    name: ["mpv","nitrogen","lxappearance","arandr","xwallpaper","kcolorchooser","feh","gimp","ffmpeg","mediainfo","cheese","pavucontrol","vlc","imv"]
   become: yes
   tags: media-utility
 
@@ -19,7 +19,7 @@
 
 - name: install disk-utilities
   community.general.pacman:
-    name: ["smartmontools","gsmartcontrol","testdisk"]
+    name: ["smartmontools","gsmartcontrol","testdisk","udiskie"]
   become: yes
   tags: disk-utility
 

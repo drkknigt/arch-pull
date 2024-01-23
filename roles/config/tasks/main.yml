@@ -39,3 +39,22 @@
      src: "/usr/bin/brave" 
      dest: "$HOME/usr/bin/brave-browser"
      state: link
+
+- name: symbolic link batcat to bat
+  file:
+     src: "/usr/bin/bat" 
+     dest: "$HOME/usr/bin/batcat"
+     state: link
+       
+
+- name: symbolic link fdfind to fd
+  file:
+     src: "/usr/bin/fd" 
+     dest: "$HOME/usr/bin/fdfind"
+     state: link
+
+- name: symbolic link xterm to alacritty
+  file:
+     src: "/usr/bin/alacritty" 
+     dest: "$HOME/usr/bin/xterm"
+     state: link
