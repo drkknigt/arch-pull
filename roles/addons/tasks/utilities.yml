@@ -1,7 +1,7 @@
 ---
 - name: install system-softwares
   community.general.pacman:
-    name: ["cmake","brightnessctl","vnstat","virt-manager","sysstat","cpupower" ]
+    name: ["cmake","brightnessctl","vnstat","sysstat","cpupower" ]
   become: yes
   tags: system-utility
 

@@ -1,0 +1,27 @@
+---
+- name: install virt-manager
+  community.general.pacman:
+    name: ["virt-manager","dnsmasq","dmidecode"]
+  become: yes
+  tags: virt
+
+- name: install qemu
+  community.general.pacman:
+    name: ["qemu-full"]
+  become: yes
+  tags: qemu
+
+- name: Add to libvirt
+  become: yes
+  user:
+    name: "{{ current_user }}"
+    groups: libvirt
+    append: true
+
+
+- name: Add to libvirt
+  become: yes
+  user:
+    name: "{{ current_user }}"
+    groups: libvirt-qemu
+    append: true

@@ -26,3 +26,19 @@
     state: started
     enabled: true
   become: yes
+
+
+- name: Enable libvirtd service
+  systemd: 
+    name: libvirtd.service
+    state: started
+    enabled: true
+  become: yes
+
+
+- name: Enable libvirtd socket
+  systemd: 
+    name: libvirtd.socket
+    state: started
+    enabled: true
+  become: yes

@@ -3,6 +3,10 @@
   import_tasks: utilities.yml
   tags: utility
 
+- name: install virt-manager
+  import_tasks: virt.yml
+  tags: virt-manager
+
 - name: install lazygit
   become: yes
   community.general.pacman:
