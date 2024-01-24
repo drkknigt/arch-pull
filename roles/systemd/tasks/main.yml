@@ -36,3 +36,7 @@
     state: started
     enabled: true
   become: yes
+
+- name: disable videocam
+  shell: echo "blacklist uvcvideo" > /etc/modprobe.d/disable_webcam.conf
+  become: yes
