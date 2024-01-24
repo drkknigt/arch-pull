@@ -1,0 +1,14 @@
+---
+- name: disable network-wait-online service
+  systemd: 
+    name: NetworkManager-wait-online.service
+    state: stopped
+    enabled: no
+  become: yes
+
+- name: Enable network dispatch service
+  systemd: 
+    name: NetworkManager-dispatcher.service
+    state: stopped
+    enabled: no
+  become: yes
