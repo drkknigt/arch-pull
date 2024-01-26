@@ -2,4 +2,4 @@
 - name: Install zsh-autosuggestions
   git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
-    dest: "~/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    dest: "~/zsh-autosuggestions"

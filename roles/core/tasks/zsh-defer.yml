@@ -1,0 +1,6 @@
+---
+- name: Install zsh defer
+  git:
+    repo: 'https://github.com/romkatv/zsh-defer'
+    depth: 1
+    dest: "~/zsh-defer/"

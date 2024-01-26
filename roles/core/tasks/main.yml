@@ -45,14 +45,14 @@
   import_tasks: zsh.yml
   tags: zsh
 
-- name: install oh-my-zsh
-  import_tasks: oh_my_zsh.yml
-  tags: oh_my_zsh
+- name: install zsh-defer
+  import_tasks: zsh-defer.yml
+  tags: zsh-defer
 
 - name: install powerlevel10k theme
   import_tasks: powerlevel10k.yml
   tags: shelltheme
 
-- name: install git suggestions
+- name: install zsh suggestions
   import_tasks: git_suggestions.yml
-  tags: git_suggestions
+  tags: suggestions-zsh
