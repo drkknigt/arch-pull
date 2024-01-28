@@ -34,12 +34,6 @@
     cp ~/.dotfiles/brave/Preferences ~/.config/BraveSoftware/Brave-Browser/Default
   tags: brave-config
 
-- name: configure pk10 to show virtuenv and pyenv
-  shell: |
-    echo "typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=true" >> ~/.p10k.zsh
-    echo "typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_WITH_PYENV=true" >> ~/.p10k.zsh
-  tags: pk10-config
-    
 
 - name: symbolic link brave-browser to brave
   file:
