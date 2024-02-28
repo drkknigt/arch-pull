@@ -5,11 +5,17 @@
   become: yes
   tags: system-utility
 
-- name: install multimedia-utility
+- name: install multimedia-utility-videos
   community.general.pacman:
-    name: ["mpv","nitrogen","lxappearance","arandr","xwallpaper","kcolorchooser","feh","gimp","ffmpeg","mediainfo","cheese","pavucontrol","vlc","imv"]
+    name: ["mpv","ffmpeg","mediainfo","cheese","pavucontrol","vlc","imv","ffmpegthumbnailer","webp-pixbuf-loader"]
   become: yes
-  tags: media-utility
+  tags: media-utility-videos
+
+- name: install multimedia-utility-images
+  community.general.pacman:
+    name: ["nitrogen","lxappearance","arandr","xwallpaper","kcolorchooser","feh","gimp","chafa"]
+  become: yes
+  tags: media-utility-images
 
 - name: install user-utilities
   community.general.pacman:

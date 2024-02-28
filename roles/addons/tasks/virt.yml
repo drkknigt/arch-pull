@@ -1,7 +1,7 @@
 ---
 - name: install virt-manager
   community.general.pacman:
-    name: ["virt-manager","dnsmasq","dmidecode"]
+    name: ["virt-manager","dnsmasq","dmidecode","iptables-nft"]
   become: yes
   tags: virt
 

@@ -10,6 +10,11 @@
 #   tags: kitty
   
 
-- name: install alacritty from aslatter ppa
+- name: install alacritty 
   import_tasks: alacritty.yml
   tags: alacritty
+
+- name: install wezterm
+  community.general.pacman:
+    name: wezterm
+  become: True
