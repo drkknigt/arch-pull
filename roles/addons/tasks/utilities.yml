@@ -55,7 +55,7 @@
     name: [  'pkgstats',  'gst-libav',  'jre8-openjdk', 'amd-ucode', 'xorg' , 'xterm' , 'perl-file-mimeinfo' , 'less' , 'coreutils' , "man-db" , "man-pages" ]
   tags: xorg-friends
 
-- name: get latest ProtonVPN version name
+- name: install downgrade package from yay
   command: yay -S downgrade --noconfirm
 
 - name: make user bin directory

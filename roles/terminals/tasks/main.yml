@@ -18,3 +18,4 @@
   community.general.pacman:
     name: wezterm
   become: True
+  tags: wezterm
