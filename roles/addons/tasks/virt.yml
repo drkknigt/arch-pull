@@ -2,7 +2,7 @@
 - name: remove iptable
   community.general.pacman:
     name: ["iptables"]
-  state: removed
+    state: removed
   become: yes
   tags: remove_iptables
 
