@@ -1,4 +1,11 @@
 ---
+- name: remove iptable
+  community.general.pacman:
+    name: "iptables"
+  state: removed
+  become: yes
+  tags: remove_iptables
+
 - name: install virt-manager
   community.general.pacman:
     name: ["virt-manager","dnsmasq","dmidecode","iptables-nft"]
