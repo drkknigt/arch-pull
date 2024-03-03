@@ -7,6 +7,7 @@
 - name: install unzip
   community.general.pacman:
     name: unzip
+  retries: 3
   become: yes
   
 
@@ -20,6 +21,7 @@
   community.general.pacman:
     name: noto-fonts-emoji
     extra_args: --needed
+  retries: 3
   become: yes
 
 - name: set up fonts

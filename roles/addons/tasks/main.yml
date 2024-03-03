@@ -11,24 +11,28 @@
   become: yes
   community.general.pacman:
     name: lazygit
+  retries: 3
   tags: lazygit
 
 - name: install glow markdown reader
   become: yes
   community.general.pacman:
     name: glow
+  retries: 3
   tags: glow
 
 - name: install firefox
   become: yes
   community.general.pacman:
     name: firefox
+  retries: 3
   tags: firefox
     
 - name: install fast file searching and text search tools
   become: yes
   community.general.pacman:
     name: ["ripgrep","fd"]
+  retries: 3
   tags: search
 
 - name: install zathura
@@ -47,6 +51,7 @@
   become: yes
   community.general.pacman:
     name: lf
+  retries: 3
   tags: lf
     
 
@@ -54,10 +59,12 @@
   become: yes
   community.general.pacman:
     name: nnn
+  retries: 3
   tags: lf
 
 - name: install flameshot
   community.general.pacman:
     name: flameshot
+  retries: 3
   become: yes
   tags: screenshot

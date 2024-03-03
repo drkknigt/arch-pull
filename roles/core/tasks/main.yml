@@ -3,6 +3,7 @@
   community.general.pacman:
     name: tmux
   become: True
+  retries: 3
   tags: tmux
   
 
@@ -10,17 +11,20 @@
   community.general.pacman:
     name: fzf
   become: True
+  retries: 3
   tags: fzf
 
 - name: install picom
   community.general.pacman:
     name: picom
+  retries: 3
   become: True
   tags: picom
 
 - name: install i3
   community.general.pacman:
     name: ["i3-wm","i3blocks","i3lock","i3status"]
+  retries: 3
   become: True
   tags: i3
     
@@ -28,12 +32,14 @@
 - name: install dunst
   community.general.pacman:
     name: dunst
+  retries: 3
   become: True
   tags: dunst
 
 - name: install pipewire
   community.general.pacman:
     name: ["pipewire","pipewire-alsa","wireplumber","pipewire-pulse"]
+  retries: 3
   become: True
   tags: audio
 

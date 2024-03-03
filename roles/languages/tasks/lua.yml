@@ -3,6 +3,7 @@
   become: yes
   community.general.pacman:
     name: ["lua53","luarocks","stylua"]
+  retries: 3
   ignore_errors: yes
 
 

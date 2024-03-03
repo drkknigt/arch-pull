@@ -17,5 +17,6 @@
 - name: install wezterm
   community.general.pacman:
     name: wezterm
+  retries: 3
   become: True
   tags: wezterm

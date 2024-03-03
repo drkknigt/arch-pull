@@ -3,6 +3,7 @@
   become: true
   community.general.pacman:
     name: xdg-user-dirs
+  retries: 3
 
 - name: set up directories in HOME
   command: xdg-user-dirs-update

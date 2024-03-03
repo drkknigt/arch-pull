@@ -3,12 +3,14 @@
   become: yes
   community.general.pacman:
      name: ["nodejs","npm"]
+  retries: 3
      
 - name: install n
   become: yes
   community.general.npm:
       name: n
       global: yes
+  retries: 3
   tags: n
 
 - name: install latest lts from n

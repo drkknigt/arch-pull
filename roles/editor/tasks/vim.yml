@@ -2,3 +2,4 @@
 - name: install vim and xclip
   shell: yes | pacman -S gvim xclip 
   become: True
+  retries: 3

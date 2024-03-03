@@ -4,6 +4,7 @@
   community.general.pacman:
     name: base-devel
     extra_args: --needed
+  retries: 3
 
 - name: clone yay git
   git:

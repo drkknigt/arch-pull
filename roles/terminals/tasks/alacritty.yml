@@ -2,4 +2,5 @@
 - name: install alacritty 
   community.general.pacman:
     name: alacritty
+  retries: 3
   become: True

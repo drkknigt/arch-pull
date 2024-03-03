@@ -3,3 +3,4 @@
   become: yes
   community.general.pacman:
     name: ["clang"]
+  retries: 3

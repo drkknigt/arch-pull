@@ -2,6 +2,7 @@
 - name: install stow
   community.general.pacman:
     name: stow
+  retries: 3
   become: yes
     
 - name: stow dotfiles

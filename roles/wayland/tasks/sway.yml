@@ -2,12 +2,14 @@
 - name: install sway dependencies
   community.general.pacman:
     name: ['wlroots','sway','wayland','wayland-protocols','wayland-utils','wayvnc','waylandpp','xdg-desktop-portal-wlr','xorg-xwayland']
+  retries: 3
   become: True
 
 - name: install tools for sway
   become: True
   community.general.pacman:
     name: ['swayimg','swaybg','grim','slurp','swayidle','swaylock','wl-clipboard','wmctrl','wofi','wev','wf-recorder']
+  retries: 3
 
 - name: install grimshot
   command: yay -S grimshot --noconfirm
