@@ -5,3 +5,4 @@
 - name: install gnome-keyring
   community.general.pacman:
     name: gnome-keyring
+  become: yes
