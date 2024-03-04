@@ -3,5 +3,5 @@
   community.general.pacman:
     name: ["zathura","zathura-djvu","zathura-pdf-mupdf"]
   become: yes
-  retries: 3
+  retries: 6
   tags: zathura

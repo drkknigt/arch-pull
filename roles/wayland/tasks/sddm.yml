@@ -2,7 +2,7 @@
 - name: install sddm
   community.general.pacman:
     name: [ "qt5-graphicaleffects","qt5-quickcontrols2","qt5-svg","sddm" ]
-  retries: 3
+  retries: 6
   become: True
 
 

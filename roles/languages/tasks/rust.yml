@@ -3,7 +3,7 @@
   become: yes
   community.general.pacman:
     name: rustup
-  retries: 3
+  retries: 6
 
 - name: install stable
   shell: rustup default stable

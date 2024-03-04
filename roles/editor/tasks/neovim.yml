@@ -2,7 +2,7 @@
   community.general.pacman:
     name: neovim
   become: yes
-  retries: 3
+  retries: 6
 
 - name: make undodir for nvim
   file:

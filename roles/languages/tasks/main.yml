@@ -3,7 +3,7 @@
   become: true
   community.general.pacman:
     name: base-devel
-  retries: 3
+  retries: 6
   tags: build-tools
 
 - name: install python
@@ -28,7 +28,7 @@
   become: yes
   community.general.pacman:
     name: go
-  retries: 3
+  retries: 6
   tags: go
     
 - name: install node

@@ -2,7 +2,7 @@
 - name: Install ZSH
   community.general.pacman:
     name: zsh
-  retries: 3
+  retries: 6
   become: True
   become: yes
     

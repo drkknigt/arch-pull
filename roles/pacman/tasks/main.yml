@@ -3,5 +3,5 @@
   become: true
   community.general.pacman:
     name: ["pacman-contrib","reflector"]
-  retries: 3
+  retries: 6
 

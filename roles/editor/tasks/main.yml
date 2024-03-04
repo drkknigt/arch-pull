@@ -12,5 +12,5 @@
   become: yes
   community.general.pacman:
     name: code
-  retries: 3
+  retries: 6
   tags: vscode

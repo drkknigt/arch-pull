@@ -5,21 +5,21 @@
     state: removed
     force: true
   become: yes
-  retries: 3
+  retries: 6
   tags: remove_iptables
 
 - name: install virt-manager
   community.general.pacman:
     name: ["virt-manager","dnsmasq","dmidecode","iptables-nft"]
   become: yes
-  retries: 3
+  retries: 6
   tags: virt
 
 - name: install qemu
   community.general.pacman:
     name: ["qemu-full"]
   become: yes
-  retries: 3
+  retries: 6
   tags: qemu
 
 - name: Add to libvirt

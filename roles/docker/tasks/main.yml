@@ -2,7 +2,7 @@
 - name: install docker dependencies
   community.general.pacman:
     name: [ "docker","docker-compose" ]
-  retries: 3
+  retries: 6
   become: yes
 
 - name: Ensure group "docker" exists
