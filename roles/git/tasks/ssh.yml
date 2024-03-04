@@ -23,3 +23,7 @@
 
 - name: add password for ssh
   shell: ssh-add $HOME/.ssh/id_ed25519
+
+- name: test ssh
+  shell: ssh -T git@github.com
+  ignore_errors: true
