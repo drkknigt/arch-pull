@@ -10,7 +10,9 @@
 - name: install hyprpicker
   command: yay -S hyprpicker --noconfirm
   tags: hypr
+  retries: 6
 
 - name: install idle
   command: yay -S sway-audio-idle-inhibit-git --noconfirm
   tags: idle
+  retries: 6

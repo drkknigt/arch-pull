@@ -1,3 +1,4 @@
 ---
 - name: install brave browser
   command: yay -S brave-bin --noconfirm
+  retries: 6

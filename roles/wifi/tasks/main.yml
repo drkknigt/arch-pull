@@ -2,6 +2,7 @@
 - name: install dependencies for rt8821ce install
   command: yay -S rtl8821ce-dkms-git --noconfirm
   when: install_wifi == "yes"
+  retries: 6
 
     
 #   apt:

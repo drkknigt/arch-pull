@@ -14,9 +14,11 @@
 - name: install grimshot
   command: yay -S grimshot --noconfirm
   tags: grimshot
+  retries: 6
 
 - name: install wlr-randr
   command: yay -S wlr-randr-git --noconfirm
   tags: wlr-randr
+  retries: 6
 
 
