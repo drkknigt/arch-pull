@@ -9,10 +9,10 @@
         update_cache: true
         upgrade: true
   roles:
+    - { role: git, tags: git }
     - { role: pacman, tags: pacman }
     - { role: directory, tags: directory }
     - { role: yay, tags: yay }
-    - { role: git, tags: git }
     - { role: editor, tags: editor }
     - { role: languages, tags: languages }
     - { role: terminals, tags: terminals }
