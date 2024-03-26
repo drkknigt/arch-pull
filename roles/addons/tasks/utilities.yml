@@ -51,7 +51,7 @@
       
 - name: install network tools
   community.general.pacman:
-    name: ["openssh","proxychains-ng","tor","torbrowser-launcher","nmap","whois","wireshark-qt","wireshark-cli"]
+    name: ["openssh","proxychains-ng","tor","torbrowser-launcher","nmap","whois","wireshark-qt","wireshark-cli","macchanger"]
   become: yes
   retries: 6
   tags: net-tools
