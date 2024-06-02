@@ -18,6 +18,6 @@
 - name: install neovide
   become: yes
   community.general.pacman:
-    name: neovide
+    name: ["neovide","libxkbcommon-x11"]
   retries: 6
   tags: neovide
