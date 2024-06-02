@@ -32,6 +32,7 @@
     mkdir -p $HOME/.config/BraveSoftware/Brave-Browser/Default
     cp ~/.dotfiles/brave/Local\ State ~/.config/BraveSoftware/Brave-Browser
     cp ~/.dotfiles/brave/Preferences ~/.config/BraveSoftware/Brave-Browser/Default
+    cp ~/.dotfiles/brave/brave-flags.conf ~/.config/
   tags: brave-config
 
 

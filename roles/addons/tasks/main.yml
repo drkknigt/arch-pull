@@ -31,7 +31,7 @@
 - name: install fast file searching and text search tools
   become: yes
   community.general.pacman:
-    name: ["ripgrep","fd"]
+    name: ["ripgrep","fd","mlocate"]
   retries: 6
   tags: search
 

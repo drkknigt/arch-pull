@@ -1,7 +1,7 @@
 ---
 - name: install system-softwares
   community.general.pacman:
-    name: ["cmake","brightnessctl","vnstat","sysstat","cpupower","inxi"]
+    name: ["cmake","brightnessctl","vnstat","sysstat","cpupower","inxi","lsof"]
   become: yes
   retries: 6
   tags: system-utility
@@ -51,7 +51,7 @@
       
 - name: install network tools
   community.general.pacman:
-    name: ["openssh","proxychains-ng","tor","torbrowser-launcher","nmap","whois","wireshark-qt","wireshark-cli","macchanger"]
+    name: ["openssh","proxychains-ng","tor","torbrowser-launcher","nmap","whois","wireshark-qt","wireshark-cli","macchanger","bind","dnsutils"]
   become: yes
   retries: 6
   tags: net-tools

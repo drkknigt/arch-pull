@@ -14,3 +14,10 @@
     name: code
   retries: 6
   tags: vscode
+
+- name: install neovide
+  become: yes
+  community.general.pacman:
+    name: neovide
+  retries: 6
+  tags: neovide
