@@ -60,3 +60,10 @@
      src: "/usr/bin/alacritty" 
      dest: "$HOME/usr/bin/xterm"
      state: link
+
+     
+- name: copy Network manager config to /etc
+  become: True
+  shell: |
+      cp /home/{{ current_user }}/.dotfiles/sys_d/NetworkManager.conf /etc/NetworkManager/
+  tags: network_manager
