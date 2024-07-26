@@ -8,7 +8,7 @@
 - name: install tools for sway
   become: True
   community.general.pacman:
-    name: ['swayimg','swaybg','grim','slurp','swayidle','swaylock','wl-clipboard','wmctrl','wofi','wev','wf-recorder']
+    name: ['swayimg','swaybg','grim','slurp','swayidle','swaylock','wl-clipboard','wmctrl','wofi','wev','wf-recorder','wtype']
   retries: 6
 
 - name: install grimshot
