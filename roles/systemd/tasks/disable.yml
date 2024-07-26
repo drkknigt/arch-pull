@@ -6,7 +6,7 @@
     enabled: no
   become: yes
 
-- name: Enable network dispatch service
+- name: disable network dispatch service
   systemd: 
     name: NetworkManager-dispatcher.service
     state: stopped
