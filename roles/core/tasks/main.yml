@@ -38,7 +38,7 @@
 
 - name: install pipewire
   community.general.pacman:
-    name: ["pipewire","pipewire-alsa","wireplumber","pipewire-pulse"]
+    name: ["pipewire","pipewire-alsa","wireplumber","pipewire-pulse","alsa-utils"]
   retries: 6
   become: True
   tags: audio
