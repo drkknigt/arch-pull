@@ -12,3 +12,11 @@
     state: stopped
     enabled: no
   become: yes
+
+  
+- name: disable wpa supplicant
+  systemd: 
+    name: wpa_supplicant.service
+    state: stopped
+    enabled: no
+  become: yes
