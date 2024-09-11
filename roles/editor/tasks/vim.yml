@@ -1,4 +1,11 @@
 ---
+- name : remove vim
+  community.general.pacman:
+    name: vim
+    state: absent
+  become: yes
+  retries: 6
+
 - name: install vim and xclip
   shell: yes | pacman -S gvim xclip 
   become: True
