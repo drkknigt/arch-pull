@@ -54,7 +54,7 @@
 
 - name: install budgie
   community.general.pacman:
-    name: ["arc-gtk-theme","mate-terminal","papirus-icon-theme","wireless_tools","budgie","nano","smartmontools","wpa_supplicant","htop","iwd","nemo","vim","xdg-utils","openssh","wget"]
+    name: ["arc-gtk-theme","mate-terminal","papirus-icon-theme","wireless_tools","budgie","nano","smartmontools","wpa_supplicant","htop","iwd","nemo","xdg-utils","openssh","wget"]
   retries: 6
   become: True
   tags: budgie
