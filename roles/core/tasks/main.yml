@@ -46,7 +46,7 @@
 
 - name: install amd graphics
   community.general.pacman:
-    name: ["libva-mesa-driver","vulkan-radeon","xf86-video-ati","xorg-xinit","mesa","xf86-video-amdgpu","xorg-server"]
+    name: ["libva-mesa-driver","vulkan-radeon","xf86-video-ati","xorg-xinit","mesa","xf86-video-amdgpu","xorg-server","lib32-vulkan-radeon","libva-utils"]
   retries: 6
   become: True
   tags: graphics
