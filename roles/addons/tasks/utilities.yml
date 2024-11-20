@@ -8,7 +8,7 @@
 
 - name: install multimedia-utility-videos
   community.general.pacman:
-    name: ["mpv","ffmpeg","mediainfo","cheese","pavucontrol","vlc","imv","ffmpegthumbnailer","webp-pixbuf-loader"]
+    name: ["mpv","ffmpeg","mediainfo","cheese","pavucontrol","vlc","imv","ffmpegthumbnailer","webp-pixbuf-loader","yt-dlp"]
   become: yes
   retries: 6
   tags: media-utility-videos
