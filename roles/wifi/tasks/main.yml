@@ -5,23 +5,9 @@
   retries: 6
 
     
-#   apt:
-#     name: ['bc','module-assistant','build-essential','dkms']
-#   become: yes
-#   when: install_wifi == "yes"
-#
-# - name: clone rtw8821ce repo
-#   git:
-#     repo: https://github.com/tomaspinho/rtl8821ce
-#     dest: $HOME/rtl8821ce
-#   when: install_wifi == "yes"
-#
 - name: build and install driver
   become: yes
   shell: |
-    # cd /home/{{ current_user }}/rtl8821ce
-    # m-a prepare
-    # ./dkms-install.sh
     modprobe -r rtw88_8821ce
     echo "blacklist rtw88_8821ce" >> /etc/modprobe.d/blacklist.conf
     modprobe 8821ce

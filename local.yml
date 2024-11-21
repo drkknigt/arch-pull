@@ -7,7 +7,8 @@
       become: true
       community.general.pacman:
         update_cache: true
-        upgrade: true
+        upgrade: false
+    - import_tasks: roles/git/tasks/ssh.yml
   roles:
     - { role: git, tags: git }
     - { role: pacman, tags: pacman }

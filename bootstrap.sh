@@ -22,13 +22,8 @@ if [ "$#" -gt "0" ] ; then
     exit
 fi
 
-# ansible pull install everything including wifi
-if [ "$wifi_info" = "yes" ]; then
-    ansible-pull --extra-vars install_wifi="$wifi_info" -U https://github.com/drkknigt/arch-pull -vvv --ask-become-pass --ask-pass
-else
-# ansible pull install everything except wifi
-    ansible-pull --extra-vars install_wifi="no" -U https://github.com/drkknigt/arch-pull -vvv --ask-become-pass --ask-pass
-fi
+# ansible pull install everything 
+ansible-pull --extra-vars install_wifi="$wifi_info" -U https://github.com/drkknigt/arch-pull -vvv --ask-become-pass --ask-pass
 # set default applications
 . ~/.dotfiles/sys_d/systemd-disabled
 fi

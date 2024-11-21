@@ -3,27 +3,30 @@
   file:
     path: $HOME/.ssh
     state: directory
+  tags: ssh
 
 - name: install ssh-key-pass
   community.general.pacman:
     name: x11-ssh-askpass
   retries: 6
   become: True
+  tags: ssh
 
 - name: install ssh key
-  get_url:
-    url: https://raw.githubusercontent.com/drkknigt/.ansible_sync/main/clone
-    dest: $HOME/.ssh/id_ed25519
-    owner: "{{ current_user }}"
-    group: "{{ current_user }}"
+  copy:
+    src: "{{ source_key }}"
+    dest: "{{ dest_key }}"
     mode: 0600
+  tags: ssh
 
-- name: ansible-vault set up keys
-  shell: ansible-vault decrypt $HOME/.ssh/id_ed25519
+- name: install ssh key public
+  copy:
+    src: "{{ source_key }}.pub"
+    dest: "{{ dest_key }}.pub"
+    mode: 0644
+  tags: ssh
 
-- name: add password for ssh
-  shell: ssh-add $HOME/.ssh/id_ed25519
-
-- name: test ssh
-  shell: ssh -T git@github.com
-  ignore_errors: true
+- name: add ssh key
+  shell: |
+    ssh-add "{{ dest_key }}"
+  tags: ssh
