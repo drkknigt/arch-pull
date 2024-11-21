@@ -5,25 +5,41 @@
 
 read -p "Do you want to install rtl8821ce wifi driver ? (yes/no)" wifi_info
 
+# vault , pass , become files
+vault_file=/tmp/vault_file
+pass_file=/tmp/pass_file
+become_file=/tmp/become_file
+
+read -p "enter vault password: " vault_pass
+echo "$vault_pass" > "$vault_file"
+
+read -p "enter passh phrase : " pass_phrase
+printf '#!/bin/sh\necho "$pass_phrase"\n' > "$pass_file"
+
+read -p "enter become password: " become_pass
+echo "$become_pass" > "$become_file"
+
+eval $(ssh-agent -s)
+ansible-playbook local.yml -t ssh --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info pass_file=$pass_file"  -vvv --ask-become-pass 
 
 # set up parallel downloads for pacman and update pacman local database and install git, ansible, reflector
-sudo sed -i 's/#Parallel/Parallel/g' /etc/pacman.conf
-sudo pacman -Syy
+echo "$become_pass" | sudo -S sed -i 's/#Parallel/Parallel/g' /etc/pacman.conf
+echo "$become_pass" | sudo -S pacman -Syy
 read -p "Do you wish to continue ? (yes/no) " continue_script
 if [ "$continue_script" = "yes" ]; then
-sudo pacman -S git ansible reflector
+echo "$become_pass" | sudo -S pacman -S git ansible reflector
 
 # start ssh agent in background
 eval $(ssh-agent -s)
 
 # run this if script passed with ansible tags 
 if [ "$#" -gt "0" ] ; then
-    ansible-pull --extra-vars install_wifi="$wifi_info" -U https://github.com/drkknigt/arch-pull -vvv --ask-vault-pass --ask-become-pass -t "$(echo "$@" | tr " " ",")" --ask-pass
+    ansible-pull --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info pass_file=$pass_file" -U https://github.com/drkknigt/arch-pull -vvv  --ask-become-pass -t "$(echo "$@" | tr " " ",")" 
     exit
 fi
 
 # ansible pull install everything 
-ansible-pull --extra-vars install_wifi="$wifi_info" -U https://github.com/drkknigt/arch-pull -vvv --ask-become-pass --ask-pass --ask-vault-pass
+ansible-pull --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info pass_file=$pass_file" -U https://github.com/drkknigt/arch-pull -vvv --ask-become-pass 
 # set default applications
 . ~/.dotfiles/sys_d/systemd-disabled
 fi
