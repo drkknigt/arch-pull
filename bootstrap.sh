@@ -19,8 +19,6 @@ printf '#!/bin/sh\necho "$pass_phrase"\n' > "$pass_file"
 read -p "enter become password: " become_pass
 echo "$become_pass" > "$become_file"
 
-eval $(ssh-agent -s)
-ansible-playbook local.yml -t ssh --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info pass_file=$pass_file"  -vvv --ask-become-pass 
 
 # set up parallel downloads for pacman and update pacman local database and install git, ansible, reflector
 echo "$become_pass" | sudo -S sed -i 's/#Parallel/Parallel/g' /etc/pacman.conf
@@ -34,12 +32,12 @@ eval $(ssh-agent -s)
 
 # run this if script passed with ansible tags 
 if [ "$#" -gt "0" ] ; then
-    ansible-pull --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info pass_file=$pass_file" -U https://github.com/drkknigt/arch-pull -vvv  --ask-become-pass -t "$(echo "$@" | tr " " ",")" 
+    ansible-pull --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info pass_file=$pass_file" -U https://github.com/drkknigt/arch-pull -vvv -t "$(echo "$@" | tr " " ",")" 
     exit
 fi
 
 # ansible pull install everything 
-ansible-pull --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info pass_file=$pass_file" -U https://github.com/drkknigt/arch-pull -vvv --ask-become-pass 
+ansible-pull --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info pass_file=$pass_file" -U https://github.com/drkknigt/arch-pull -vvv 
 # set default applications
 . ~/.dotfiles/sys_d/systemd-disabled
 fi
