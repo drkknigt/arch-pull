@@ -28,5 +28,5 @@
 
 - name: add ssh key
   shell: |
-    DISPLAY=1 SSH_ASKPASS="{{ pass_file }}" ssh-add "{{ dest_key }}" < /dev/null
+    ssh-add "{{ dest_key }}"
   tags: [ssh_test,ssh]
