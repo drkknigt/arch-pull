@@ -28,6 +28,5 @@
 
 - name: add ssh key
   shell: |
-  { sleep .1; echo {{ ssh_pass }}; } | script -q /dev/null -c 'ssh-add /path/to/identity'
-    ssh-add "{{ dest_key }}"
+  { sleep .1; echo {{ ssh_pass }}; } | script -q /dev/null -c 'ssh-add "{{ dest_key }}"'
   tags: [ssh_test,ssh]
