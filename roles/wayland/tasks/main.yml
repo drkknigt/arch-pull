@@ -8,7 +8,9 @@
   tags: sway
 
 - name: install hyprpicker
-  command: yay -S hyprpicker --noconfirm
+  community.general.pacman:
+    name: hyprpicker
+  become: yes
   tags: hypr
   retries: 6
 

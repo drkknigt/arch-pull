@@ -1,4 +1,16 @@
 ---
-- name: install brave browser
-  command: yay -S brave-bin --noconfirm
-  retries: 6
+- name: Clone brave source code
+  git:
+    repo: https://aur.archlinux.org/brave-bin.git 
+    dest: /tmp/brave
+    update: true
+
+- name: Build brave
+  command:
+    chdir: /tmp/brave
+    cmd: "makepkg -sf --noconfirm"
+
+- name : install brave
+  shell: |
+    pacman -U /tmp/brave/brave-*.pkg.tar.zst --noconfirm
+  become: true

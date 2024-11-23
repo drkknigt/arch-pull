@@ -17,8 +17,10 @@
   retries: 6
 
 - name: install wlr-randr
-  command: yay -S wlr-randr-git --noconfirm
+  community.general.pacman:
+    name: wlr-randr
   tags: wlr-randr
   retries: 6
+  become: True
 
 
