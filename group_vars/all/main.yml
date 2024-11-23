@@ -1,3 +1,4 @@
 current_user: "{{ lookup('env', 'USER') }}"
+ssh_pass: "{{ lookup('env', 'PASS_PHRASE') }}"
 source_key: "./.ssh/id_ed25519"
 dest_key: "/home/{{ ansible_user_id }}/.ssh/id_ed25519"

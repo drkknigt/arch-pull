@@ -17,6 +17,10 @@ read -p "enter become password: " become_pass
 echo "$become_pass" > "$become_file"
 
 
+read -p "Enter pass phrase: " PASS_PHRASE
+export PASS_PHRASE
+
+
 # set up parallel downloads for pacman and update pacman local database and install git, ansible, reflector
 echo "$become_pass" | sudo -S sed -i 's/#Parallel/Parallel/g' /etc/pacman.conf
 echo "$become_pass" | sudo -S pacman -Syy
