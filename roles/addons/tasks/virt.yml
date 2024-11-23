@@ -25,7 +25,7 @@
 - name: Add to libvirt
   become: yes
   user:
-    name: "{{ current_user }}"
+    name: "{{ ansible_user_id }}"
     groups: libvirt
     append: true
 
@@ -33,6 +33,6 @@
 - name: Add to libvirt
   become: yes
   user:
-    name: "{{ current_user }}"
+    name: "{{ ansible_user_id }}"
     groups: libvirt-qemu
     append: true

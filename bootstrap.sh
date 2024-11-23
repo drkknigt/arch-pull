@@ -22,7 +22,7 @@ echo "$become_pass" | sudo -S sed -i 's/#Parallel/Parallel/g' /etc/pacman.conf
 echo "$become_pass" | sudo -S pacman -Syy
 read -p "Do you wish to continue ? (yes/no) " continue_script
 if [ "$continue_script" = "yes" ]; then
-echo "$become_pass" | sudo -S pacman -S git ansible reflector
+sudo -S pacman -S git ansible reflector --noconfirm
 
 # start ssh agent in background
 eval $(ssh-agent -s)

@@ -65,5 +65,5 @@
 - name: copy Network manager config to /etc
   become: True
   shell: |
-      cp /home/{{ current_user }}/.dotfiles/sys_d/NetworkManager.conf /etc/NetworkManager/
+      cp /home/{{ ansible_user_id }}/.dotfiles/sys_d/NetworkManager.conf /etc/NetworkManager/
   tags: network_manager

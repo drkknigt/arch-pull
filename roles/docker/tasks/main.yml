@@ -13,6 +13,6 @@
 - name: Add to docker
   become: yes
   user:
-    name: "{{ current_user }}"
+    name: "{{ ansible_user_id }}"
     groups: docker
     append: true

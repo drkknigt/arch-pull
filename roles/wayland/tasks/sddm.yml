@@ -13,11 +13,11 @@
   become: true
   shell: |
     mkdir /etc/sddm.conf.d
-    cp /home/{{ current_user }}/sugar-dark /usr/share/sddm/themes/ -rf
+    cp /home/{{ ansible_user_id }}/sugar-dark /usr/share/sddm/themes/ -rf
 
 - name: copy sddm conf to /etc
   become: True
   file:
-     src: "/home/{{ current_user }}/.dotfiles/sddm/sddm.conf" 
+     src: "/home/{{ ansible_user_id }}/.dotfiles/sddm/sddm.conf" 
      dest: "/etc/sddm.conf.d/sddm.conf"
      state: link

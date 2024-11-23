@@ -7,5 +7,5 @@
   become: yes
     
 - name: Change shell to zsh
-  shell: usermod --shell /bin/zsh {{ current_user }}
+  shell: usermod --shell /bin/zsh {{ ansible_user_id }}
   become: yes

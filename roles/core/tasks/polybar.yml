@@ -14,7 +14,7 @@
 # - name: build polybar
 #   become: True
 #   shell: |
-#     cd /home/{{ current_user }}/polybar
+#     cd /home/{{ ansible_user_id }}/polybar
 #     mkdir build
 #     cd build
 #     cmake ..
@@ -27,5 +27,5 @@
     touch /etc/udev/rules.d/backlight.rules
     echo "ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="radeon_bl0", RUN+="/bin/chgrp video /sys/class/backlight/radeon_bl0/brightness" >> /etc/udev/rules.d/backlight.rules
     echo "ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="radeon_bl0", RUN+="/bin/chmod g+w /sys/class/backlight/radeon_bl0/brightness" >> /etc/udev/rules.d/backlight.rules
-    usermod -aG video {{ current_user }}
+    usermod -aG video {{ ansible_user_id }}
   tags: polybar_rules

@@ -1,18 +1,16 @@
 ---
-- name: install build essentials
-  become: true
-  community.general.pacman:
-    name: base-devel
-    extra_args: --needed
-  retries: 6
-
-- name: clone yay git
+- name: Clone yay
   git:
-    repo: https://aur.archlinux.org/yay.git
+    repo: https://aur.archlinux.org/yay-bin.git
     dest: ~/yay
+    update: true
 
-- name: build yay
+- name: Build yay
+  command:
+    chdir: "~/yay"
+    cmd: "makepkg -sf --noconfirm"
+
+- name : install yay
   shell: |
-    cd ~/yay
-    makepkg -si --noconfirm
-    yay
+    pacman -U /home/{{ ansible_user_id }}/yay/yay-*.pkg.tar.zst --noconfirm
+  become: true
