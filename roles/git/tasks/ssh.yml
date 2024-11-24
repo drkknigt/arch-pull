@@ -34,4 +34,5 @@
 - name: connect to github
   shell: |
     ssh -T -o StrictHostKeyChecking=accept-new git@github.com
+  ignore_errors: True
   tags: [ssh_test,ssh]
