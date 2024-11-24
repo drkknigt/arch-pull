@@ -29,6 +29,8 @@
 - name: add ssh key
   shell: |
     ssh-add "{{ dest_key }}"
+    { sleep .1; echo "{{ ssh_pass }}"; } | script -q /dev/null -c "{{ dest_key }}" 
+  ignore_errors: True
   tags: [ssh_test,ssh]
 
 - name: connect to github
