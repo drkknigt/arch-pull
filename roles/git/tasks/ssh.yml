@@ -5,13 +5,6 @@
     state: directory
   tags: ssh
 
-- name: install ssh-key-pass
-  community.general.pacman:
-    name: x11-ssh-askpass
-  retries: 6
-  become: True
-  tags: ssh
-
 - name: install ssh key
   copy:
     src: "{{ source_key }}"
@@ -28,8 +21,7 @@
 
 - name: add ssh key
   shell: |
-    ssh-add "{{ dest_key }}"
-    { sleep .1; echo "{{ ssh_pass }}"; } | script -q /dev/null -c "{{ dest_key }}" 
+    { sleep .1; echo "{{ ssh_pass }}"; } | script -q /dev/null -c 'ssh-add "{{ dest_key }}"'
   ignore_errors: True
   tags: [ssh_test,ssh]
 
@@ -38,3 +30,10 @@
     ssh -T -o StrictHostKeyChecking=accept-new git@github.com
   ignore_errors: True
   tags: [ssh_test,ssh]
+
+- name: install ssh-key-pass
+  community.general.pacman:
+    name: x11-ssh-askpass
+  retries: 6
+  become: True
+  tags: ssh
