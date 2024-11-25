@@ -1,0 +1,16 @@
+---
+- name: Clone yay
+  git:
+    repo: https://aur.archlinux.org/xdg-desktop-portal-termfilechooser-fix-for-lf-git.git
+    dest: ~/termfilechooser
+    update: true
+
+- name: Build yay
+  command:
+    chdir: "~/termfilechooser"
+    cmd: "makepkg -sf --noconfirm"
+
+- name : install yay
+  shell: |
+    pacman -U /home/{{ ansible_user_id }}/termfilechooser/xdg-*.pkg.tar.zst --noconfirm
+  become: true

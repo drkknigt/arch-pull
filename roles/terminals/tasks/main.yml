@@ -15,3 +15,10 @@
   retries: 6
   become: True
   tags: wezterm
+
+- name: install kitty
+  community.general.pacman:
+    name: kitty
+  retries: 6
+  become: True
+  tags: kitty

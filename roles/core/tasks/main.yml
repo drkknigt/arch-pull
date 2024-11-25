@@ -78,3 +78,7 @@
 - name: install zsh suggestions
   import_tasks: git_suggestions.yml
   tags: suggestions-zsh
+
+- name: install xdg-desktop-termfilechooser
+  import_tasks: xdg-desktop-termfilechooser.yml
+  tags: termfilechooser
