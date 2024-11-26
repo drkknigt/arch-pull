@@ -24,6 +24,13 @@
   retries: 6
   become: yes
 
+- name: install noto fonts
+  community.general.pacman:
+    name: ttf-jetbrains-mono
+    extra_args: --needed
+  retries: 6
+  become: yes
+
 - name: set up fonts
   shell: fc-cache
 
