@@ -1,4 +1,8 @@
 ---
+- name: install brave browser
+  import_tasks: brave.yml
+  tags: brave
+
 - name: install misc software
   import_tasks: utilities.yml
   tags: utility
@@ -38,10 +42,6 @@
 - name: install zathura
   import_tasks: zathura.yml
   tags: zathura
-
-- name: install brave browser
-  import_tasks: brave.yml
-  tags: brave
 
 - name: install protonvpn
   import_tasks: vpn.yml
