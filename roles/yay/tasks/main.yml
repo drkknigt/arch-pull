@@ -2,15 +2,15 @@
 - name: Clone yay
   git:
     repo: https://aur.archlinux.org/yay-bin.git
-    dest: ~/yay
+    dest: /tmp/yay
     update: true
 
 - name: Build yay
   command:
-    chdir: "~/yay"
+    chdir: "/tmp/yay"
     cmd: "makepkg -sf --noconfirm"
 
 - name : install yay
   shell: |
-    pacman -U /home/{{ ansible_user_id }}/yay/yay-*.pkg.tar.zst --noconfirm
+    pacman -U /tmp/yay/yay-*.pkg.tar.zst --noconfirm
   become: true
