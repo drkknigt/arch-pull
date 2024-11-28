@@ -1,16 +1,16 @@
 ---
-- name: Clone yay
+- name: Clone termfilechooser
   git:
     repo: https://aur.archlinux.org/xdg-desktop-portal-termfilechooser-fix-for-lf-git.git
     dest: /tmp/termfilechooser
     update: true
 
-- name: Build yay
+- name: Build termfilechooser
   command:
     chdir: /tmp/termfilechooser
     cmd: "makepkg -sf --noconfirm"
 
-- name : install yay
+- name : install termfilechooser
   shell: |
     pacman -U /tmp/termfilechooser/xdg-*.pkg.tar.zst --noconfirm
   become: true
