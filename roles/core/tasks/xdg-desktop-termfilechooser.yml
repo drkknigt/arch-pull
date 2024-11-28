@@ -1,22 +1,9 @@
 ---
-- name: Clone termfilechooser
-  git:
-    repo: https://aur.archlinux.org/xdg-desktop-portal-termfilechooser-fix-for-lf-git.git
-    dest: /tmp/termfilechooser
-    update: true
-
-- name: Build termfilechooser
-  command:
-    chdir: /tmp/termfilechooser
-    cmd: "makepkg -sf --noconfirm"
-
-# - name: save result in yay_variable of termfilechooser package name
-#   shell: ls -1 /tmp/termfilechooser | grep -Pi 'pkg\.tar\.zst$' | head -1
-#   register: term_name
-#
-# - name: install termfilechooser
-#   become: yes
-#   community.general.pacman:
-#     name: /tmp/termfilechooser/{{ term_name.stdout }}
-#     extra_args: --noconfirm
-#   ignore_errors: yes
+- name: Install xdg-desktop-portal-termfilechooser-fix-for-lf-git
+  community.general.pacman:
+    name: xdg-desktop-portal-termfilechooser-fix-for-lf-git
+    state: present
+    executable: yay
+    extra_args: --noconfirm
+  ignore_errors: yes
+  retries: 6

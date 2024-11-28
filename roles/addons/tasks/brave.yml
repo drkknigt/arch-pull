@@ -1,22 +1,9 @@
 ---
-- name: Clone brave source code
-  git:
-    repo: https://aur.archlinux.org/brave-bin.git 
-    dest: /tmp/brave
-    update: true
-
-- name: Build brave
-  command:
-    chdir: /tmp/brave
-    cmd: "makepkg -sf --noconfirm"
-
-# - name: save result in yay_variable of yay package name
-#   shell: ls -1 /tmp/brave | grep -Pi 'pkg\.tar\.zst$' | head -1
-#   register: brave_name
-#
-# - name: install brave
-#   become: yes
-#   community.general.pacman:
-#     name: /tmp/brave/{{ brave_name.stdout }}
-#     extra_args: --noconfirm
-#   ignore_errors: yes
+- name: Install brave-bin
+  community.general.pacman:
+    name: brave-bin
+    state: present
+    executable: yay
+    extra_args: --noconfirm
+  ignore_errors: yes
+  retries: 6

@@ -30,14 +30,17 @@ sudo -S pacman -S git ansible reflector --noconfirm
 # start ssh agent in background
 eval $(ssh-agent -s)
 
+git clone https://www.github.com/drkknigt/arch-pull /tmp/arch-pull
+cd /tmp/arch-pull
+
 # run this if script passed with ansible tags 
 if [ "$#" -gt "0" ] ; then
-    ansible-pull --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info" -U https://github.com/drkknigt/arch-pull -vvv -t "$(echo "$@" | tr " " ",")" 
+    ansible-playbook local.yml --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info"  -vvv -t "$(echo "$@" | tr " " ",")" 
     exit
 fi
 
 # ansible pull install everything 
-ansible-pull --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info" -U https://github.com/drkknigt/arch-pull -vvv 
+ansible-playbook local.yml --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info"  -vvv 
 # set default applications
 . ~/.dotfiles/sys_d/systemd-disabled
 fi

@@ -10,14 +10,14 @@
     chdir: "/tmp/yay"
     cmd: "makepkg -sf --noconfirm"
 
-# - name: save result in yay_variable of yay package name
-#   shell: ls -1 /tmp/yay | grep -Pi 'pkg\.tar\.zst$' | head -1
-#   register: yay_name
-#
-#
-# - name: install yay
-#   become: yes
-#   community.general.pacman:
-#     name: /tmp/yay/{{ yay_name.stdout }}
-#     extra_args: --noconfirm
-#   ignore_errors: yes
+- name: save result in yay_variable of yay package name
+  shell: ls -1 /tmp/yay | grep -Pi 'pkg\.tar\.zst$' | head -1
+  register: yay_name
+
+
+- name: install yay
+  become: yes
+  community.general.pacman:
+    name: /tmp/yay/{{ yay_name.stdout }}
+    extra_args: --noconfirm
+  ignore_errors: yes
