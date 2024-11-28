@@ -10,7 +10,14 @@
     chdir: "/tmp/yay"
     cmd: "makepkg -sf --noconfirm"
 
-- name : install yay
-  shell: |
-    pacman -U /tmp/yay/yay-*.pkg.tar.zst --noconfirm
-  become: true
+- name: save result in yay_variable of yay package name
+  shell: ls -1 /tmp/yay | grep -Pi 'pkg\.tar\.zst$' | head -1
+  register: yay_name
+
+
+- name: install yay
+  become: yes
+  community.general.pacman:
+    name: /tmp/yay/{{ yay_name.stdout }}
+    extra_args: --noconfirm
+  ignore_errors: yes

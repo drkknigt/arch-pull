@@ -10,7 +10,13 @@
     chdir: /tmp/termfilechooser
     cmd: "makepkg -sf --noconfirm"
 
-- name : install termfilechooser
-  shell: |
-    pacman -U /tmp/termfilechooser/xdg-*.pkg.tar.zst --noconfirm
-  become: true
+- name: save result in yay_variable of termfilechooser package name
+  shell: ls -1 /tmp/termfilechooser | grep -Pi 'pkg\.tar\.zst$' | head -1
+  register: term_name
+
+- name: install termfilechooser
+  become: yes
+  community.general.pacman:
+    name: /tmp/termfilechooser/{{ term_name.stdout }}
+    extra_args: --noconfirm
+  ignore_errors: yes

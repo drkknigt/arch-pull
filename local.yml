@@ -8,15 +8,12 @@
       community.general.pacman:
         update_cache: true
         upgrade: false
-    - import_tasks: roles/yay/tasks/main.yml
-    - import_tasks: roles/addons/tasks/brave.yml
-    - import_tasks: roles/core/tasks/xdg-desktop-termfilechooser.yml
     - import_tasks: roles/git/tasks/ssh.yml
   roles:
     - { role: git, tags: git }
     - { role: pacman, tags: pacman }
     - { role: directory, tags: directory }
-    # - { role: yay, tags: yay }
+    - { role: yay, tags: yay }
     - { role: editor, tags: editor }
     - { role: languages, tags: languages }
     - { role: terminals, tags: terminals }
