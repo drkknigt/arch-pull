@@ -30,6 +30,7 @@ sudo -S pacman -S git ansible reflector --noconfirm
 # start ssh agent in background
 eval $(ssh-agent -s)
 
+# clone arch-pull for setting up arch linux
 git clone https://www.github.com/drkknigt/arch-pull /tmp/arch-pull
 cd /tmp/arch-pull
 
@@ -39,7 +40,7 @@ if [ "$#" -gt "0" ] ; then
     exit
 fi
 
-# ansible pull install everything 
+# ansible  install everything 
 ansible-playbook local.yml --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info"  -vvv 
 # set default applications
 . ~/.dotfiles/sys_d/systemd-disabled
