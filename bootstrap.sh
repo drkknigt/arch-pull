@@ -37,7 +37,7 @@ if [ "$#" -gt "0" ] ; then
 fi
 
 # ansible pull install everything 
-ansible-pull --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info" -U https://github.com/drkknigt/arch-pull -vvv  --ask-become-pass
+ansible-pull --become-password-file="$become_file" --vault-password-file="$vault_file" --extra-vars "install_wifi=$wifi_info" -U https://github.com/drkknigt/arch-pull -vvv 
 # set default applications
 . ~/.dotfiles/sys_d/systemd-disabled
 fi
