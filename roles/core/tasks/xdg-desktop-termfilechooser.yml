@@ -1,9 +1,3 @@
 ---
-- name: Install xdg-desktop-portal-termfilechooser-fix-for-lf-git
-  community.general.pacman:
-    name: xdg-desktop-portal-termfilechooser-fix-for-lf-git
-    state: present
-    executable: yay
-    extra_args: --noconfirm
-  ignore_errors: yes
-  retries: 6
+- name: install xdg-desktop-portal-termfilechooser-fix-for-lf-git
+  command: yay -S xdg-desktop-portal-termfilechooser-fix-for-lf-git --noconfirm

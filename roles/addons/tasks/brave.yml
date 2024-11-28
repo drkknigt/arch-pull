@@ -1,9 +1,3 @@
 ---
-- name: Install brave-bin
-  community.general.pacman:
-    name: brave-bin
-    state: present
-    executable: yay
-    extra_args: --noconfirm
-  ignore_errors: yes
-  retries: 6
+- name: install brave browser
+  command: yay -S brave-bin --noconfirm
