@@ -10,13 +10,13 @@
     chdir: /tmp/brave
     cmd: "makepkg -sf --noconfirm"
 
-- name: save result in yay_variable of yay package name
-  shell: ls -1 /tmp/brave | grep -Pi 'pkg\.tar\.zst$' | head -1
-  register: brave_name
-
-- name: install brave
-  become: yes
-  community.general.pacman:
-    name: /tmp/brave/{{ brave_name.stdout }}
-    extra_args: --noconfirm
-  ignore_errors: yes
+# - name: save result in yay_variable of yay package name
+#   shell: ls -1 /tmp/brave | grep -Pi 'pkg\.tar\.zst$' | head -1
+#   register: brave_name
+#
+# - name: install brave
+#   become: yes
+#   community.general.pacman:
+#     name: /tmp/brave/{{ brave_name.stdout }}
+#     extra_args: --noconfirm
+#   ignore_errors: yes
