@@ -1,3 +1,9 @@
 ---
-- name: install brave browser
-  command: yay -S brave-bin --noconfirm
+- name: Installing brave browser 
+  kewlfft.aur.aur:
+    name: brave-bin
+    state: present
+    use: yay
+    extra_args: --noconfirm
+  become: yes
+  become_user: aur_builder

@@ -14,7 +14,13 @@
   tags: hypr
   retries: 6
 
-- name: install idle
-  command: yay -S sway-audio-idle-inhibit-git --noconfirm
+- name: Installing idle
+  kewlfft.aur.aur:
+    name: sway-audio-idle-inhibit-git
+    state: present
+    use: yay
+    extra_args: --noconfirm
+  become: yes
   tags: idle
+  become_user: aur_builder
   retries: 6

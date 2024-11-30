@@ -1,23 +1,46 @@
 ---
-- name: Clone yay
-  git:
-    repo: https://aur.archlinux.org/yay-bin.git
-    dest: /tmp/yay
-    update: true
-
-- name: Build yay
-  command:
-    chdir: "/tmp/yay"
-    cmd: "makepkg -sf --noconfirm"
-
-- name: save result in yay_variable of yay package name
-  shell: ls -1 /tmp/yay | grep -Pi 'pkg\.tar\.zst$' | head -1
-  register: yay_name
-
-
-- name: install yay
+- name: Create the `aur_builder` user
   become: yes
-  community.general.pacman:
-    name: /tmp/yay/{{ yay_name.stdout }}
-    extra_args: --noconfirm
-  ignore_errors: yes
+  ansible.builtin.user:
+    name: aur_builder
+    create_home: yes
+    group: wheel
+
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    mode: 0644
+    validate: 'visudo -cf %s'
+
+# - name: Clone yay
+#   git:
+#     repo: https://aur.archlinux.org/yay-bin.git
+#     dest: /tmp/yay
+#     update: true
+#
+# - name: Build yay
+#   command:
+#     chdir: "/tmp/yay"
+#     cmd: "makepkg -sf --noconfirm"
+#
+# - name: save result in yay_variable of yay package name
+#   shell: ls -1 /tmp/yay | grep -Pi 'pkg\.tar\.zst$' | head -1
+#   register: yay_name
+#
+#
+# - name: install yay
+#   become: yes
+#   community.general.pacman:
+#     name: /tmp/yay/{{ yay_name.stdout }}
+#     extra_args: --noconfirm
+#   ignore_errors: yes
+
+
+- name: Installing AUR helper
+  kewlfft.aur.aur:
+    name: yay
+  become: yes
+  become_user: aur_builder

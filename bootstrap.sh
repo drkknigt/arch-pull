@@ -27,6 +27,9 @@ read -p "Do you wish to continue ? (yes/no) " continue_script
 if [ "$continue_script" = "yes" ]; then
 sudo -S pacman -S git ansible reflector --noconfirm
 
+# install kewlfft.aur for installing yay packages
+ansible-galaxy collection install kewlfft.aur
+
 # start ssh agent in background
 eval $(ssh-agent -s)
 

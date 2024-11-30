@@ -1,3 +1,9 @@
 ---
-- name: install xdg-desktop-portal-termfilechooser-fix-for-lf-git
-  command: yay -S xdg-desktop-portal-termfilechooser-fix-for-lf-git --noconfirm
+- name: Installing xdg-desktop-portal-termfilechooser-fix-for-lf-git
+  kewlfft.aur.aur:
+    name: xdg-desktop-portal-termfilechooser-fix-for-lf-git
+    state: present
+    use: yay
+    extra_args: --noconfirm
+  become: yes
+  become_user: aur_builder

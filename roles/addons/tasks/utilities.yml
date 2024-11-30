@@ -64,9 +64,16 @@
   tags: xorg-friends
   retries: 6
 
-- name: install downgrade package from yay
-  command: yay -S downgrade --noconfirm
+- name: Installing downgrade
+  kewlfft.aur.aur:
+    name: downgrade
+    state: present
+    use: yay
+    extra_args: --noconfirm
+  become: yes
+  become_user: aur_builder
   retries: 6
+  tags: downgrade
 
 - name: make user bin directory
   file:

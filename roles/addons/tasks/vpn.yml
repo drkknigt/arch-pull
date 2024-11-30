@@ -1,7 +1,12 @@
 ---
-- name: install protonvpn-cli
-  command: yay -S protonvpn-cli --noconfirm
-  retries: 6
+- name: Installing protonvpn-cli
+  kewlfft.aur.aur:
+    name: protonvpn-cli
+    state: present
+    use: yay
+    extra_args: --noconfirm
+  become: yes
+  become_user: aur_builder
 
 - name: install gnome-keyring
   community.general.pacman:
