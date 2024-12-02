@@ -21,11 +21,16 @@
 #     make -j$(nproc)
 #     make install
 
+- name: save result of backlight
+  shell: ls /sys/class/backlight
+  register: backlight_name
+  tags: polybar_rules
+
 - name: add udev rules 
   become: True
   shell: |
     touch /etc/udev/rules.d/backlight.rules
-    echo "ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="radeon_bl0", RUN+="/bin/chgrp video /sys/class/backlight/radeon_bl0/brightness" >> /etc/udev/rules.d/backlight.rules
-    echo "ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="radeon_bl0", RUN+="/bin/chmod g+w /sys/class/backlight/radeon_bl0/brightness" >> /etc/udev/rules.d/backlight.rules
+    echo ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="{{ backlight_name.stdout }}", RUN+="/bin/chgrp video /sys/class/backlight/{{ backlight_name.stdout }}/brightness" >> /etc/udev/rules.d/backlight.rules
+    echo ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="{{ backlight_name.stdout }}", RUN+="/bin/chmod g+w /sys/class/backlight/{{ backlight_name.stdout }}/brightness" >> /etc/udev/rules.d/backlight.rules
     usermod -aG video {{ ansible_user_id }}
   tags: polybar_rules
