@@ -22,7 +22,7 @@
 
 - name: install user-utilities
   community.general.pacman:
-    name: ["tldr","htop","rofi","bat","tree","xautolock","qbittorrent","libqalculate","sddm","xdotool","git-delta","unrar"]
+    name: ["tldr","htop","rofi","bat","tree","xautolock","qbittorrent","libqalculate","bc","sddm","xdotool","git-delta","unrar"]
   become: yes
   retries: 6
   tags: user-utility
