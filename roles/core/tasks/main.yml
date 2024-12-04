@@ -82,3 +82,11 @@
 - name: install xdg-desktop-termfilechooser
   import_tasks: xdg-desktop-termfilechooser.yml
   tags: termfilechooser
+
+- name: install hotpsot
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/garywill/linux-router/master/lnxrouter
+    dest: ~/usr/bin/router
+    mode: '0750'
+  tags: router
+  retries: 3
