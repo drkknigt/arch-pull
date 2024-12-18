@@ -20,12 +20,13 @@
   import_tasks: fonts.yml
   tags: fonts
 
-- name: copy lfrun 
+- name: copy lf files
   shell: |
-    cp $HOME/.dotfiles/lf/.config/lf/lfrun $HOME/usr/bin/
     chmod +x $HOME/.dotfiles/lf/.config/lf/preview
     chmod +x $HOME/.dotfiles/lf/.config/lf/cleaner
-    chmod +x $HOME/usr/bin/lfrun
+    chmod +x $HOME/.dotfiles/lf/.config/lf/lfrun
+    chmod +x $HOME/.dotfiles/lf/.config/lf/lf-command
+  tags: chmod_lf
 
 - name: setup brave config
   shell: |
@@ -47,6 +48,20 @@
      src: "/usr/bin/bat" 
      dest: "$HOME/usr/bin/batcat"
      state: link
+
+- name: symbolic link for lf-command
+  file:
+    src: "$HOME/.dotfiles/lf/.config/lf/lf-command"
+    dest: "$HOME/usr/bin/lf-command"
+    state: link
+  tags: lf-command
+       
+- name: symbolic link for lfrun
+  file:
+    src: "/$HOME/.dotfiles/lf/.config/lf/lfrun"
+    dest: "$HOME/usr/bin/lfrun"
+    state: link
+  tags: lfrun
        
 
 - name: symbolic link fdfind to fd
