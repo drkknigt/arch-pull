@@ -83,6 +83,11 @@
   import_tasks: xdg-desktop-termfilechooser.yml
   tags: termfilechooser
 
+- name: make user bin directory
+  file:
+    path: $HOME/usr/bin
+    state: directory
+
 - name: install hotpsot
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/garywill/linux-router/master/lnxrouter
