@@ -1,15 +1,21 @@
 ---
-- name: Installing protonvpn-cli
-  kewlfft.aur.aur:
-    name: protonvpn-cli
-    state: present
-    use: yay
-    extra_args: --noconfirm
-  become: yes
-  become_user: aur_builder
 
 - name: install gnome-keyring
   community.general.pacman:
     name: gnome-keyring
   retries: 6
+  become: yes
+
+- name: install openvpn 
+  community.general.pacman:
+    name: ["openvpn"]
+  retries: 6
+  become: yes
+
+
+- name: Create update-resolve-conf file in /etc/openvpn
+  shell: |
+      echo "#!/bin/sh" > /etc/openvpn/update-resolv-conf
+      echo "echo 'working'" >> /etc/openvpn/update-resolv-conf
+      chmod +x /etc/openvpn/update-resolv-conf
   become: yes

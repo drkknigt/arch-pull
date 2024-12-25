@@ -11,14 +11,10 @@
     name: ['swayimg','swaybg','grim','slurp','swayidle','swaylock','wl-clipboard','wmctrl','wofi','wev','wf-recorder','wtype']
   retries: 6
 
-- name: Installing grimshot
-  kewlfft.aur.aur:
-    name: grimshot
-    state: present
-    use: yay
-    extra_args: --noconfirm
+- name: Installing grimshot and sway-contrib
+  community.general.pacman:
+    name: sway-contrib
   become: yes
-  become_user: aur_builder
   retries: 6
   tags: grimshot
 

@@ -36,6 +36,16 @@
     cp ~/.dotfiles/brave/brave-flags.conf ~/.config/
   tags: brave-config
 
+- name: make config dir for openvpn
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - $HOME/.config/openvpn/config/udp
+    - $HOME/.config/openvpn/config/tcp
+    - $HOME/.config/openvpn/pass/
+  tags: openvpn_config
+
 
 - name: symbolic link brave-browser to brave
   file:

@@ -43,7 +43,7 @@
   import_tasks: zathura.yml
   tags: zathura
 
-- name: install protonvpn
+- name: install openvpn
   import_tasks: vpn.yml
   tags: vpn
 
