@@ -95,8 +95,8 @@
 
 - name: setup lf as file picker
   ansible.builtin.copy:
-    src: /home/{{ ansible_user_id }}/.dotfiles/bin/bin/system_scripts/lf-wrapper.sh
-    dest: /usr/share/xdg-desktop-portal-termfilechooser/lf-wrapper.sh
+    src: /home/{{ ansible_user_id }}/.dotfiles/bin/bin/system_scripts/lf-browser-wrapper.sh
+    dest: /usr/share/xdg-desktop-portal-termfilechooser/lf-browser-wrapper.sh
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0755
