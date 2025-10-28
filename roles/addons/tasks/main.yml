@@ -68,3 +68,10 @@
   retries: 6
   become: yes
   tags: screenshot
+
+- name: install ufw
+  community.general.pacman:
+    name: ufw
+  retries: 6
+  become: yes
+  tags: ufw-net-filter
