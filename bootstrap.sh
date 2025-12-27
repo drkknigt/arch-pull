@@ -21,8 +21,8 @@ trap cleanup EXIT
 
 setup_passwords() {
     echo "--- Credentials Setup ---"
-    read -rs -p "Enter Vault Password: " vault_pass; echo
-    read -rs -p "Enter sudo (become) Password: " become_pass; echo
+    read -p "Enter Vault Password: " vault_pass; echo
+    read -p "Enter sudo (become) Password: " become_pass; echo
     read -p "Enter SSH Passphrase: " PASS_PHRASE
     
     echo "$vault_pass" > "$VAULT_FILE"
@@ -38,7 +38,7 @@ edit_pacman() {
     sudo sed -i 's/^#ParallelDownloads/ParallelDownloads/g' /etc/pacman.conf
     
     # Enable multilib if not present
-    if ! grep -q "\[multilib\]" /etc/pacman.conf; then
+    if ! grep -qP "^\[multilib\]" /etc/pacman.conf; then
         echo -e "\n[multilib]\nInclude = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
     fi
 }
