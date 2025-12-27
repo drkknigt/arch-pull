@@ -20,9 +20,19 @@
   retries: 6
   tags: media-utility-images
 
+
+- name: Installing xautolock
+  kewlfft.aur.aur:
+    name: xautolock
+    state: present
+    use: yay
+    extra_args: --noconfirm
+  become: yes
+  become_user: xautolock
+
 - name: install user-utilities
   community.general.pacman:
-    name: ["tldr","htop","rofi","bat","tree","xautolock","qbittorrent","libqalculate","bc","sddm","xdotool","git-delta","unrar"]
+    name: ["tldr","htop","rofi","bat","tree","qbittorrent","libqalculate","bc","sddm","xdotool","git-delta","unrar"]
   become: yes
   retries: 6
   tags: user-utility
