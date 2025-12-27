@@ -19,7 +19,7 @@
 
 - name: install multimedia-utility-images
   community.general.pacman:
-    name: ["nitrogen","lxappearance","arandr","xwallpaper","kcolorchooser","feh","gimp","chafa"]
+    name: ["lxappearance","arandr","xwallpaper","kcolorchooser","feh","gimp","chafa"]
   become: yes
   retries: 6
   tags: media-utility-images
