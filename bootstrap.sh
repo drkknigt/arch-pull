@@ -10,12 +10,6 @@ BOOTSTRAP_LOCK="/tmp/bootstrap.lock"
 VAULT_FILE=$(mktemp /tmp/vault.XXXXXX)
 BECOME_FILE=$(mktemp /tmp/become.XXXXXX)
 
-# Ensure temporary password files are deleted on exit (even if script crashes)
-cleanup() {
-    rm -f "$VAULT_FILE" "$BECOME_FILE"
-    echo "Cleanup complete."
-}
-trap cleanup EXIT
 
 # --- Functions ---
 
@@ -48,9 +42,9 @@ edit_pacman() {
 read -p "Install rtl8821ce wifi driver? (y/n): " wifi_choice
 install_wifi=$([[ "$wifi_choice" =~ ^[Yy]$ ]] && echo "yes" || echo "no")
 
+setup_passwords
 # 1. Bootstrap Phase
 if [[ ! -f "$BOOTSTRAP_LOCK" ]]; then
-    setup_passwords
     edit_pacman
     
     echo "Installing core dependencies..."
