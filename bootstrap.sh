@@ -21,14 +21,14 @@ trap cleanup EXIT
 
 setup_passwords() {
     echo "--- Credentials Setup ---"
-    read -p "Enter Vault Password: " vault_pass; echo
-    read -p "Enter sudo (become) Password: " become_pass; echo
+    if [[ ! -f "$BOOTSTRAP_LOCK" ]]; then
+        read -p "Enter Vault Password: " vault_pass; echo
+        read -p "Enter sudo (become) Password: " become_pass; echo
+        echo "$vault_pass" > "$VAULT_FILE"
+        echo "$become_pass" > "$BECOME_FILE"
+        chmod 600 "$VAULT_FILE" "$BECOME_FILE"
+    fi
     read -p "Enter SSH Passphrase: " PASS_PHRASE
-    
-    echo "$vault_pass" > "$VAULT_FILE"
-    echo "$become_pass" > "$BECOME_FILE"
-    chmod 600 "$VAULT_FILE" "$BECOME_FILE"
-    
     export PASS_PHRASE
 }
 
