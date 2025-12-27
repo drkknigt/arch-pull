@@ -13,9 +13,16 @@
   retries: 6
   tags: media-utility-videos
 
-- name: install nitrogen
-  command: yay -S nitrogen --noconfirm
+- name: Installing nitrogen
+  kewlfft.aur.aur:
+    name: nitrogen
+    state: present
+    use: yay
+    extra_args: --noconfirm
   retries: 6
+  become: yes
+  become_user: aur_builder
+
 
 - name: install multimedia-utility-images
   community.general.pacman:
