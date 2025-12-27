@@ -7,8 +7,8 @@ set -euo pipefail
 REPO_URL="https://www.github.com/drkknigt/arch-pull"
 REPO_DIR="/tmp/arch-pull"
 BOOTSTRAP_LOCK="/tmp/bootstrap.lock"
-VAULT_FILE=$(mktemp /tmp/vault.XXXXXX)
-BECOME_FILE=$(mktemp /tmp/become.XXXXXX)
+VAULT_FILE="/tmp/vault_file"
+BECOME_FILE="/tmp/become_file"
 
 
 # --- Functions ---
