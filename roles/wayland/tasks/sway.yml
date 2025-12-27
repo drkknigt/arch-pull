@@ -1,7 +1,7 @@
 ---
 - name: install sway dependencies
   community.general.pacman:
-    name: ['wlroots','sway','wayland','wayland-protocols','wayland-utils','wayvnc','waylandpp','xdg-desktop-portal-wlr','xorg-xwayland']
+    name: ['wlroots0.19','sway','wayland','wayland-protocols','wayland-utils','wayvnc','waylandpp','xdg-desktop-portal-wlr','xorg-xwayland']
   retries: 6
   become: True
 
