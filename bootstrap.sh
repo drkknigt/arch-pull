@@ -22,6 +22,9 @@ export PASS_PHRASE
 
 # set up parallel downloads for pacman and update pacman local database and install git, ansible, reflector
 echo "$become_pass" | sudo -S sed -i 's/#Parallel/Parallel/g' /etc/pacman.conf
+echo "[multilib]" | sudo tee -a /etc/pacman.conf
+echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
+
 echo "$become_pass" | sudo -S pacman -Syy
 read -p "Do you wish to continue ? (yes/no) " continue_script
 if [ "$continue_script" = "yes" ]; then
