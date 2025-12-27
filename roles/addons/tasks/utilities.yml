@@ -28,7 +28,7 @@
     use: yay
     extra_args: --noconfirm
   become: yes
-  become_user: xautolock
+  become_user: aur_builder
 
 - name: install user-utilities
   community.general.pacman:
