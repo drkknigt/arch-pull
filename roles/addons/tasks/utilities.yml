@@ -13,6 +13,10 @@
   retries: 6
   tags: media-utility-videos
 
+- name: install nitrogen
+  command: yay -S nitrogen --noconfirm
+  retries: 6
+
 - name: install multimedia-utility-images
   community.general.pacman:
     name: ["nitrogen","lxappearance","arandr","xwallpaper","kcolorchooser","feh","gimp","chafa"]
