@@ -17,6 +17,7 @@
   tags: blacklist_modules
 
 - name: Remove the user 'aur_builder'
+  become: yes
   ansible.builtin.user:
     name: aur_builder
     state: absent
