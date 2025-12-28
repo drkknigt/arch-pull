@@ -1,5 +1,5 @@
 ---
-- name: Installing xdg-desktop-portal-termfilechooser-fix-for-lf-git
+- name: Installing xdg-desktop-portal-termfilechooser-boydaihungst-git
   kewlfft.aur.aur:
     name: xdg-desktop-portal-termfilechooser-boydaihungst-git
     state: present
@@ -7,6 +7,7 @@
     extra_args: --noconfirm
   become: yes
   become_user: aur_builder
+  retries: 6
 
 # https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser
 # https://github.com/boydaihungst/xdg-desktop-portal-termfilechooser

@@ -38,11 +38,17 @@
 
 - name: install pipewire
   community.general.pacman:
-    name: ["pipewire","pipewire-alsa","wireplumber","pipewire-pulse","alsa-utils"]
+    name: ["pipewire","pipewire-alsa","wireplumber","pipewire-pulse","alsa-utils","pipewire-jack"]
   retries: 6
   become: True
   tags: audio
 
+- name: install obs-studio
+  community.general.pacman:
+    name: obs-studio
+  retries: 6
+  become: true
+  tags: obs
 
 - name: install amd graphics
   community.general.pacman:

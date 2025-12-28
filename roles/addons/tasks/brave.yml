@@ -7,3 +7,4 @@
     extra_args: --noconfirm
   become: yes
   become_user: aur_builder
+  retries: 6

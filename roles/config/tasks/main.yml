@@ -20,7 +20,7 @@
   import_tasks: fonts.yml
   tags: fonts
 
-- name: copy lf files
+- name: make essential lf files executable
   shell: |
     chmod +x $HOME/.dotfiles/lf/.config/lf/preview
     chmod +x $HOME/.dotfiles/lf/.config/lf/cleaner

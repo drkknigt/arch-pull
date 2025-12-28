@@ -28,7 +28,7 @@ ansible-playbook local.yml -vvv --ask-become-pass
 
 To Bootstrap your pc/laptop to install all the software and configuration desribed by the ansible playbook and roles use following commands:
 ```bash
-curl https://raw.githubusercontent.com/drkknigt/arch-pull/main/bootstrap.sh && chmod +x bootstrap.sh
+curl https://raw.githubusercontent.com/drkknigt/arch-pull/main/bootstrap.sh -o bootstrap.sh && chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
 This command will install the full system softwares and set up all the configuration and dependencies described in this repo

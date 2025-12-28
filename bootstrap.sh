@@ -47,9 +47,9 @@ print_tags(){
     echo "net-tools  network_manager  nnn  node  openvpn_config  pacman  picom  pip_main_libraries  "
     echo "poetry  polybar  polybar_rules  pyenv  python  qemu  remove_iptables  router  rust  screenshot  "
     echo "sddm  search  shelltheme  social  ssh  ssh_test  stow  suggestions-zsh  sway  system-utility  "
-    echo "systemd  temp-power-utility  termfilechooser  terminals  tmux  ufw-net-filter  update-man  "
-    echo "user-utility  utility  vim  virt  virt-manager  vpn  vscode  wallpapers  wayland  wezterm  "
-    echo "wifi  wine  wlr-randr  xorg-friends  yay  zathura  zsh  zsh-defer"
+    echo "system  temp-power-utility  termfilechooser  terminals  tmux  ufw-net-filter  update-man  "
+    echo "user-utility  utility  vim  virt  virt-manager  vpn  vscode  wallpapers  wayland"
+    echo "wifi  wine  wlr-randr  xorg-friends  yay  zathura  zsh  zsh-defer remove_aur_builder remove_sudo_line"
 }
 
 parse_args() {

@@ -55,13 +55,6 @@
   tags: lf
     
 
-- name: install nnn
-  become: yes
-  community.general.pacman:
-    name: nnn
-  retries: 6
-  tags: lf
-
 - name: install flameshot
   community.general.pacman:
     name: flameshot

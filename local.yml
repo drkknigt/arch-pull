@@ -23,5 +23,5 @@
     - { role: game, tags: game }
     - { role: wayland, tags: wayland }
     - { role: docker, tags: docker }
-    - { role: systemd, tags: systemd }
+    - { role: system, tags: system }
     - { role: wifi, tags: wifi }
