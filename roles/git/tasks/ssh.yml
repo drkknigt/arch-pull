@@ -19,6 +19,12 @@
     mode: 0644
   tags: ssh
 
+- name: install openssh
+  become: true
+  community.general.pacman:
+    name: openssh 
+  retries: 6
+
 - name: add ssh key
   shell: |
     { sleep .1; echo "{{ ssh_pass }}"; } | script -q /dev/null -c 'ssh-add "{{ dest_key }}"'
