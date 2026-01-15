@@ -1,14 +1,14 @@
 ---
 - name: install system-softwares
   community.general.pacman:
-    name: ["cmake","brightnessctl","vnstat","sysstat","cpupower","inxi","lsof","lshw","bluez-utils","gvfs-mtp"]
+    name: ["cmake","brightnessctl","vnstat","sysstat","cpupower","inxi","lsof","lshw","bluez-utils","gvfs-mtp","dosfstools"]
   become: yes
   retries: 6
   tags: system-utility
 
 - name: install multimedia-utility-videos
   community.general.pacman:
-    name: ["mpv","ffmpeg","mediainfo","cheese","pavucontrol","vlc","imv","ffmpegthumbnailer","webp-pixbuf-loader","yt-dlp"]
+    name: ["mpv","ffmpeg","mediainfo","pavucontrol","vlc","imv","ffmpegthumbnailer","webp-pixbuf-loader","yt-dlp"]
   become: yes
   retries: 6
   tags: media-utility-videos
