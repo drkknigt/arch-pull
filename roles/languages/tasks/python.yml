@@ -8,7 +8,7 @@
 - name: install python libraries
   become: yes
   community.general.pacman:
-    name: ["python-black","flake8","mypy","autopep8","python-pylint","python-pyftpdlib","python-pytest","python-pipx","python-setuptools","python-virtualenv"]
+    name: ["python-black","python-flake8","mypy","autopep8","python-pylint","python-pyftpdlib","python-pytest","python-pipx","python-setuptools","python-virtualenv"]
   retries: 6
   tags: pip_main_libraries
 

@@ -17,7 +17,7 @@ HIDE_INPUT=false
 # --- Functions ---
 
 show_help(){
-    echo "Usage: $0 [-t \"tag1 tag2\"] [-s] [-h]"
+    echo "Usage: $0 [-t \"tag1 tag2\"] [-s] [-h] [-c]"
     echo "Usage: $0 [OPTIONS]
 
     Arch Linux Development Environment Setup Script.
@@ -30,11 +30,19 @@ show_help(){
                             not be echoed to the terminal (recommended for security).
     -h, --help              Display this help message and exit.
     -p, --print-tags        Print all availabe ansible tags
+    -c, --clear-cache       Removes all the temperoray files created
 
     Examples:
     $0 -s
     $0 --tags 'dotfiles packages'
     $0 -s -t 'aur'"
+}
+
+
+clear_cache(){
+    [[ -f "$BECOME_FILE" ]] &&  rm "$SUDO_FILE" && echo "removed $SUDO_FILE";echo
+    [[ -f "$VAULT_FILE" ]] && rm "$VAULT_FILE" && echo "removed $VAULT_FILE";echo
+    [[ -f "$BOOTSTRAP_LOCK" ]] && rm "$BOOTSTRAP_LOCK" && echo "removed $BOOTSTRAP_LOCK";echo
 }
 
 print_tags(){
@@ -65,6 +73,9 @@ parse_args() {
             -p|--print-tags)
                 print_tags 
                 exit 0
+                ;;
+            -c|--clear-cache) 
+                clear_cache
                 ;;
             -t|--tags)
                 # Check if the next argument exists and doesn't start with a '-'
