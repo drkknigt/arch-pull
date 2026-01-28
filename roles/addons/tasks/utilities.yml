@@ -62,7 +62,7 @@
       
 - name: install network tools
   community.general.pacman:
-    name: ["openssh","proxychains-ng","tor","torbrowser-launcher","nmap","whois","wireshark-qt","wireshark-cli","macchanger","bind","dnsutils"]
+    name: ["openssh","proxychains-ng","tor","torbrowser-launcher","nmap","whois","wireshark-qt","wireshark-cli","macchanger","bind"]
   become: yes
   retries: 6
   tags: net-tools
@@ -71,7 +71,7 @@
 - name: xorg and friends
   become: true
   community.general.pacman:
-    name: [  'pkgstats',  'gst-libav',  'jre8-openjdk', 'amd-ucode', 'xorg' , 'xterm' , 'perl-file-mimeinfo' , 'less' , 'coreutils' , "man-db" , "man-pages" ]
+    name: [  'pkgstats',  'gst-libav',  'jre8-openjdk', 'amd-ucode', 'xorg-server' , 'xterm' , 'perl-file-mimeinfo' , 'less' , 'coreutils' , "man-db" , "man-pages" ]
   tags: xorg-friends
   retries: 6
 

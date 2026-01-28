@@ -52,7 +52,7 @@
 
 - name: install amd graphics
   community.general.pacman:
-    name: ["libva-mesa-driver","vulkan-radeon","xf86-video-ati","xorg-xinit","mesa","xf86-video-amdgpu","xorg-server","lib32-vulkan-radeon","libva-utils"]
+    name: ["vulkan-radeon","xf86-video-ati","xorg-xinit","mesa","xf86-video-amdgpu","xorg-server","lib32-vulkan-radeon","libva-utils"]
   retries: 6
   become: True
   tags: graphics
@@ -60,14 +60,14 @@
 
 - name: install budgie
   community.general.pacman:
-    name: ["materia-gtk-theme","mate-terminal","papirus-icon-theme","wireless_tools","budgie","nano","smartmontools","wpa_supplicant","htop","iwd","nemo","xdg-utils","openssh","wget"]
+    name: ["materia-gtk-theme","mate-terminal","papirus-icon-theme","wireless_tools","budgie-desktop","budgie-desktop-view","budgie-backgrounds","network-manager-applet","blueman","nano","smartmontools","wpa_supplicant","htop","iwd","nemo","xdg-utils","openssh","wget"]
   retries: 6
   become: True
   tags: budgie
 
 - name: install polybor
   import_tasks: polybar.yml
-  tags: polybar
+  tags: backlight
 
 - name: install zsh-shell
   import_tasks: zsh.yml
@@ -79,7 +79,7 @@
 
 - name: install powerlevel10k theme
   import_tasks: powerlevel10k.yml
-  tags: shelltheme
+  tags: shell-theme
 
 - name: install zsh suggestions
   import_tasks: git_suggestions.yml
@@ -99,5 +99,5 @@
     url: https://raw.githubusercontent.com/garywill/linux-router/master/lnxrouter
     dest: ~/usr/bin/router
     mode: '0750'
-  tags: router
+  tags: hotspot
   retries: 3
